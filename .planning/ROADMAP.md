@@ -32,10 +32,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. Running the dev server shows a rendered page in the browser (not a blank screen or build error)
   2. The project is TypeScript-checked and builds without errors
   3. A minimal layout shell exists with placeholder regions for queue and ventanillas, ready for Phase 2+ to fill in
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 01-01: TBD
+- [ ] 01-01-PLAN.md — Scaffold Vite/React/TS and render static visible shell (title + queue/ventanillas placeholders)
 
 ### Phase 2: Add Ticket & View Queue
 **Goal**: Users can add a new ticket to the shared queue and see the ordered list of waiting tickets update immediately — the first true end-to-end vertical slice of the Core Value
