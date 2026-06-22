@@ -41,7 +41,7 @@ Declared values (must be multiples of 4) — unchanged from Phase 1, reused here
 | 2xl | 48px | Not used this phase |
 | 3xl | 64px | Not used this phase |
 
-Exceptions: none. The "Agregar turno" button uses standard padding `12px 20px` (not on the 8-pt scale on the horizontal axis, matching common button padding conventions) — this is the one explicitly-allowed button-padding exception per common practice; vertical/gap spacing around it stays on-scale (`24px` margin-bottom per D-07 button placement).
+Exceptions: none. The "Agregar turno" button uses padding `12px 16px`, fully on-scale (12px and 16px are both multiples of 4); vertical/gap spacing around it stays on-scale as well (`24px` margin-bottom per D-07 button placement).
 
 ---
 
@@ -104,11 +104,13 @@ Accent reserved for: page title text, section headings ("Cola"/"Ventanillas"), t
 
 Captures D-05 and D-07 from 02-CONTEXT.md so the executor has an unambiguous structural reference. Extends Phase 1's layout contract; does not replace it.
 
+**Visual focal point:** The "Agregar turno" button is the primary visual anchor on this screen state — positioned above the queue strip per D-07's top-to-bottom action-then-result flow, the user's eye lands on the CTA first, then moves down to the queue strip where the consequence of clicking it (a new ticket chip) appears.
+
 | Region | Position | Structure |
 |--------|----------|-----------|
-| "Agregar turno" button | Between `<h1>` page title and `.queue-strip` section (D-07) | `<button type="button" className="add-ticket-button">`, Body size (16px) / weight 600, Secondary background (#F1F3F5), Accent text (#1F2933), `border-radius: 6px`, padding `12px 20px`, `margin: 0 0 24px` (24px gap below before queue strip), `cursor: pointer`, no border |
+| "Agregar turno" button | Between `<h1>` page title and `.queue-strip` section (D-07) | `<button type="button" className="add-ticket-button">`, Body size (16px) / weight 600, Secondary background (#F1F3F5), Accent text (#1F2933), `border-radius: 6px`, padding `12px 16px`, `margin: 0 0 24px` (24px gap below before queue strip), `cursor: pointer`, no border |
 | Queue strip — ticket list | Inside existing `.queue-strip` section, replacing the placeholder `<p>` when `queue.length > 0` | `<ul className="ticket-list">` with `display: flex; flex-wrap: wrap; gap: 8px` (D-05 — horizontal wrapping row, never sideways-scrolling, never vertical stack); each `<li className="ticket-chip" key={ticket.id}>` renders "Turno {ticket.number}" |
-| Ticket chip | Inside `.ticket-list` | `border-radius: 999px` (fully rounded "badge" shape per D-05), `padding: 6px 14px`, Dominant background (#FFFFFF, distinct from queue-strip's #F1F3F5 container), Accent text (#1F2933), Body size (16px) / weight 400, no border |
+| Ticket chip | Inside `.ticket-list` | `border-radius: 999px` (fully rounded "badge" shape per D-05), `padding: 8px 16px`, Dominant background (#FFFFFF, distinct from queue-strip's #F1F3F5 container), Accent text (#1F2933), Body size (16px) / weight 400, no border |
 | Queue strip — empty state | Inside `.queue-strip`, replacing the ticket list when `queue.length === 0` | Unchanged from Phase 1: `<p>` "Próximos turnos aparecerán aquí", Body size (16px) / weight 400 |
 
 **Conditional render rule:** The queue strip body is a single conditional — `queue.length === 0` renders the existing placeholder `<p>`; otherwise renders `<ul className="ticket-list">`. Both live in the same `.queue-strip` container; no layout shift to the container itself, only its inner content swaps.
