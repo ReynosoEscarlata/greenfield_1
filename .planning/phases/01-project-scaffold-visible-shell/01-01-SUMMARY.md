@@ -50,7 +50,7 @@ metrics:
 
 # Phase 1 Plan 01: Project Scaffold & Visible Shell Summary
 
-Vite 8 + React 19 + TypeScript scaffold installed in place, default starter replaced with a static "Turnero" shell (title + queue-strip + ventanillas-grid placeholders) styled by a single consolidated `src/index.css`, with `npm run build` passing cleanly (zero TS errors, dist/ emitted) — ready for human visual confirmation at Task 4.
+Vite 8 + React 19 + TypeScript scaffold installed in place, default starter replaced with a static "Turnero" shell (title + queue-strip + ventanillas-grid placeholders) styled by a single consolidated `src/index.css`, with `npm run build` passing cleanly (zero TS errors, dist/ emitted) and the rendered shell visually confirmed by the human at the Task 4 checkpoint.
 
 ## What Was Built
 
@@ -88,7 +88,17 @@ None. This plan introduces no new network endpoints, auth paths, file-access pat
 
 ## Checkpoint Reached
 
-Task 4 (`checkpoint:human-verify`) requires a human to visually confirm the rendered shell in a browser — this cannot be self-verified by the executor. Execution stops here; see the CHECKPOINT REACHED section returned to the orchestrator for resume details.
+Task 4 (`checkpoint:human-verify`) required a human to visually confirm the rendered shell in a browser — this could not be self-verified by the executor. The dev server was started on http://localhost:5174/ and the human confirmed the rendered shell matches the UI-SPEC: "Turnero" title, "Cola" queue strip, "Ventanillas" grid section, no blank screen, no build/error overlay, no console errors, and the layout reflows correctly when the window is narrowed.
+
+**Resolution: APPROVED (2026-06-21).** Task 4's acceptance criteria are satisfied — all three plan success criteria are now met. The dev server process was stopped after the visual confirmation was recorded.
+
+## Task 4 Status: VERIFIED / COMPLETE
+
+- [x] Browser shows "Turnero" title + queue strip on top + ventanillas region below, matching UI-SPEC.md Layout Contract.
+- [x] No blank screen, no build/error overlay, no console errors.
+- [x] Layout does not break when the window is narrowed.
+
+All 4 tasks in this plan are now complete.
 
 ## Self-Check: PASSED
 
@@ -99,3 +109,8 @@ Task 4 (`checkpoint:human-verify`) requires a human to visually confirm the rend
 - FOUND: dist/ — emitted by `npm run build` (verified exit 0, zero TS errors).
 - FOUND commit 13b4355 — `feat(01-01): scaffold Vite React-TS project`.
 - FOUND commit 0423c40 — `feat(01-01): replace starter demo with static shell`.
+- FOUND: Task 4 human-verify checkpoint approved — dev server at http://localhost:5174/ visually confirmed against UI-SPEC.md (title, queue strip, ventanillas grid, no errors, responsive reflow). Dev server process stopped after confirmation.
+
+## Plan Status: COMPLETE
+
+All 4 tasks (Task 1 node-version gate, Task 2 scaffold, Task 3 static shell, Task 4 human-verify checkpoint) are done. All 3 phase success criteria are met. Ready for orchestrator to merge this worktree.
