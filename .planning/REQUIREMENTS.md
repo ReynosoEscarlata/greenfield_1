@@ -70,24 +70,24 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| QUEUE-01 | TBD | Pending |
-| QUEUE-02 | TBD | Pending |
-| WINDOW-01 | TBD | Pending |
-| WINDOW-02 | TBD | Pending |
-| WINDOW-03 | TBD | Pending |
-| CALL-01 | TBD | Pending |
-| CALL-02 | TBD | Pending |
-| FEEDBACK-01 | TBD | Pending |
-| FEEDBACK-02 | TBD | Pending |
-| DISPLAY-01 | TBD | Pending |
-| PERSIST-01 | TBD | Pending |
-| PRIVACY-01 | TBD | Pending |
+| QUEUE-01 | Phase 2 | Pending |
+| QUEUE-02 | Phase 2 | Pending |
+| WINDOW-01 | Phase 3 | Pending |
+| WINDOW-02 | Phase 3 | Pending |
+| WINDOW-03 | Phase 3 | Pending |
+| CALL-01 | Phase 4 | Pending |
+| CALL-02 | Phase 4 | Pending |
+| FEEDBACK-01 | Phase 5 | Pending |
+| FEEDBACK-02 | Phase 6 | Pending |
+| DISPLAY-01 | Phase 7 | Pending |
+| PERSIST-01 | Phase 8 | Pending |
+| PRIVACY-01 | Phase 7 | Pending |
 
 **Coverage:**
 - v1 requirements: 12 total
-- Mapped to phases: 0
-- Unmapped: 12 ⚠️ (to be filled by roadmap creation)
+- Mapped to phases: 12
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-06-21*
-*Last updated: 2026-06-21 after initial definition*
+*Last updated: 2026-06-21 after roadmap creation (12/12 v1 requirements mapped to 8 phases)*
