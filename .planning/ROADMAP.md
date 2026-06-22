@@ -12,7 +12,7 @@ This roadmap delivers a client-only React + TypeScript + Vite waiting-room queue
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Project Scaffold & Visible Shell** - App boots with Vite/React/TS and renders a static page shell in the browser
+- [x] **Phase 1: Project Scaffold & Visible Shell** - App boots with Vite/React/TS and renders a static page shell in the browser (completed 2026-06-22)
 - [ ] **Phase 2: Add Ticket & View Queue** - User can add tickets and see them appear in the ordered waiting queue end-to-end
 - [ ] **Phase 3: Configurable Ventanillas** - User can add/remove windows and see each window's current-ticket state, including the empty state
 - [ ] **Phase 4: Call Next (Atomic Dequeue)** - User can press "Llamar siguiente" on any window to atomically pull the next ticket from the shared queue, including the empty-queue case
@@ -35,7 +35,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 1 plan
 
 Plans:
-- [ ] 01-01-PLAN.md — Scaffold Vite/React/TS and render static visible shell (title + queue/ventanillas placeholders)
+- [x] 01-01-PLAN.md — Scaffold Vite/React/TS and render static visible shell (title + queue/ventanillas placeholders)
 
 ### Phase 2: Add Ticket & View Queue
 **Goal**: Users can add a new ticket to the shared queue and see the ordered list of waiting tickets update immediately — the first true end-to-end vertical slice of the Core Value
@@ -144,7 +144,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Project Scaffold & Visible Shell | 0/TBD | Not started | - |
+| 1. Project Scaffold & Visible Shell | 1/1 | Complete   | 2026-06-22 |
 | 2. Add Ticket & View Queue | 0/TBD | Not started | - |
 | 3. Configurable Ventanillas | 0/TBD | Not started | - |
 | 4. Call Next (Atomic Dequeue) | 0/TBD | Not started | - |
