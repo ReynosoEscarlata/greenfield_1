@@ -165,7 +165,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 1. Project Scaffold & Visible Shell | 1/1 | Complete   | 2026-06-22 |
 | 2. Add Ticket & View Queue | 1/1 | Complete   | 2026-07-07 |
 | 3. Configurable Ventanillas | 2/2 | Complete   | 2026-07-07 |
-| 4. Call Next (Atomic Dequeue) | 2/2 | Complete   | 2026-07-07 |
+| 4. Call Next (Atomic Dequeue) | 2/2 | Complete    | 2026-07-07 |
 | 5. Call Sound Feedback | 0/TBD | Not started | - |
 | 6. Call Transition Animation | 0/TBD | Not started | - |
 | 7. Distance-Readable & Privacy-Safe Display | 0/TBD | Not started | - |

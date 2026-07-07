@@ -18,8 +18,8 @@
 
 ### Llamado (CALL)
 
-- [ ] **CALL-01**: Usuario puede presionar "Llamar siguiente" en una ventanilla para tomar de forma atómica el próximo turno de la cola compartida (sin posibilidad de que dos ventanillas tomen el mismo turno en clics simultáneos)
-- [ ] **CALL-02**: Si la cola está vacía al presionar "Llamar siguiente", se muestra un mensaje indicando que no hay turnos en espera (el botón permanece habilitado)
+- [x] **CALL-01**: Usuario puede presionar "Llamar siguiente" en una ventanilla para tomar de forma atómica el próximo turno de la cola compartida (sin posibilidad de que dos ventanillas tomen el mismo turno en clics simultáneos)
+- [x] **CALL-02**: Si la cola está vacía al presionar "Llamar siguiente", se muestra un mensaje indicando que no hay turnos en espera (el botón permanece habilitado)
 
 ### Feedback (FEEDBACK)
 
@@ -75,8 +75,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WINDOW-01 | Phase 3 | Complete |
 | WINDOW-02 | Phase 3 | Complete |
 | WINDOW-03 | Phase 3 | Complete |
-| CALL-01 | Phase 4 | Pending |
-| CALL-02 | Phase 4 | Pending |
+| CALL-01 | Phase 4 | Complete |
+| CALL-02 | Phase 4 | Complete |
 | FEEDBACK-01 | Phase 5 | Pending |
 | FEEDBACK-02 | Phase 6 | Pending |
 | DISPLAY-01 | Phase 7 | Pending |
