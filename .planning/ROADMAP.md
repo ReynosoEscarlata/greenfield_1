@@ -64,8 +64,16 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
+
+**Wave 1**
 - [ ] 03-01-PLAN.md — Extend turnero.ts (Ventanilla type, QueueState, ADD_TICKET spread fix, ADD_WINDOW/REMOVE_WINDOW), extend turnero.test.ts (WINDOW-01/02/03 unit tests), create App.test.tsx scaffold (failing integration tests), add test script to package.json
+
+**Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 03-02-PLAN.md — Update App.tsx (VentanillaCard component, ventanillas section, Agregar ventanilla button, WINDOW-02 guard), update index.css (migrate stale selectors, add card/button/warning styles), visual checkpoint
+
+**Cross-cutting constraints:**
+- `ADD_TICKET` spread fix must land in Wave 1 — without it, any window add followed by ticket add silently drops ventanilla state
+- `VentanillaCard` must be a named export from `App.tsx` so Wave 1's `App.test.tsx` integration tests can render it in isolation
 
 ### Phase 4: Call Next (Atomic Dequeue)
 **Goal**: Users can press "Llamar siguiente" on any ventanilla and reliably take the next ticket from the shared queue with no possibility of duplicate or skipped tickets across simultaneous clicks, completing the Core Value end-to-end
@@ -147,7 +155,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 |-------|----------------|--------|-----------|
 | 1. Project Scaffold & Visible Shell | 1/1 | Complete   | 2026-06-22 |
 | 2. Add Ticket & View Queue | 1/1 | Complete   | 2026-07-07 |
-| 3. Configurable Ventanillas | 0/2 | Not started | - |
+| 3. Configurable Ventanillas | 0/2 | Planned | - |
 | 4. Call Next (Atomic Dequeue) | 0/TBD | Not started | - |
 | 5. Call Sound Feedback | 0/TBD | Not started | - |
 | 6. Call Transition Animation | 0/TBD | Not started | - |
