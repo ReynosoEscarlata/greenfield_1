@@ -49,7 +49,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 02-01-PLAN.md — Install vitest, implement queueReducer (Ticket type + ADD_TICKET action), wire "Agregar turno" button and conditional chip list into App.tsx, append CSS rules
+- [x] 02-01-PLAN.md — Install vitest, implement queueReducer (Ticket type + ADD_TICKET action), wire "Agregar turno" button and conditional chip list into App.tsx, append CSS rules
 
 ### Phase 3: Configurable Ventanillas
 **Goal**: Users can dynamically configure how many call windows exist, and each window visibly displays its own current-ticket state (including an explicit empty state) — extending the vertical slice from "queue only" to "queue + windows" without yet wiring the call action

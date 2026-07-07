@@ -365,9 +365,10 @@ No other state-of-the-art shifts apply — `useReducer` with discriminated union
 
 **If this table is empty:** N/A — two low-risk discretionary items logged above; both are explicitly delegated to Claude's discretion in CONTEXT.md, not decisions requiring user confirmation.
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Should `Ticket.id` and `Ticket.number` really be two fields when they hold the same value in v1?**
+   - RESOLVED: Keep both fields — `id` serves as the stable React `key` prop, `number` serves as the display label. Semantically distinct even when equal in v1: `id` is an identity reference (never shown), `number` is a human-readable label (always shown). Retaining both now avoids a breaking rename if a future phase (e.g. Phase 4 dequeue) causes `number` to gap, making `key={ticket.number}` unsafe. Adopted in W1-01.
    - What we know: QUEUE-01/QUEUE-02 only require a displayed number and an ordered list; nothing in v1 requires `id` to diverge from `number`.
    - What's unclear: Whether the added field is worth the minor verbosity for a feature (OPS-01 recall) that is explicitly deferred to v2 and may never ship.
    - Recommendation: Keep both fields — the cost is negligible (one extra property) and it removes any future ambiguity about whether `key={ticket.number}` is safe to reuse after a hypothetical future renumbering feature. Low-stakes either way; planner may collapse to a single field if preferring minimalism.
