@@ -545,12 +545,13 @@ describe('FEEDBACK-01: Beep on successful call', () => {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **useBeep singleton reset between tests**
    - What we know: Module-level `audioCtx` variable persists across tests within the same module instance in Vitest
    - What's unclear: Whether the recommended `vi.mock('./useBeep', ...)` approach (which bypasses the actual singleton entirely) fully covers D-08's intent, or whether tests should verify the actual AudioContext mock was invoked
    - Recommendation: Planner should specify mocking `useBeep` at the module level in `App.test.tsx` for integration tests (tests verify `play()` called), while trusting the `setupTests.ts` AudioContext mock to cover any unit test of `useBeep` itself
+   - **RESOLVED:** `vi.mock('./useBeep', () => ({ useBeep: () => ({ play: mockPlay }) }))` is used in `App.test.tsx` — integration tests verify `play()` call count without touching the module-level `audioCtx` singleton. The `setupTests.ts` AudioContext mock covers any future unit tests of `useBeep` directly. Both approaches are in place; D-08's intent (verify beep fires when `queueLength > 0`, does not fire when queue is empty) is fully covered by 05-01 Task 2.
 
 ---
 
