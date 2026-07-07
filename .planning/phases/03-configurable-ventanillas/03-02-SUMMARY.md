@@ -55,7 +55,7 @@ completed: "2026-07-07"
 - **Duration:** ~5 min
 - **Started:** 2026-07-07T11:48:00Z
 - **Completed:** 2026-07-07T11:49:00Z
-- **Tasks:** 2 (+ checkpoint pending human verification)
+- **Tasks:** 3 (2 implementation + 1 checkpoint, all complete)
 - **Files modified:** 2
 
 ## Accomplishments
@@ -121,8 +121,24 @@ None — no external service configuration required.
 
 - All 14 tests pass (QUEUE-01/02 + WINDOW-01/02/03 reducer + WINDOW-02/03 integration)
 - TypeScript build clean
-- Awaiting visual checkpoint approval (checkpoint task returned to orchestrator)
+- Visual checkpoint approved by user — plan fully complete
 - Phase 4 (CALL_NEXT) can import `Ventanilla` type and extend `QueueAction` union with `{ type: 'CALL_NEXT'; windowId: number }` — types are in place
+
+## Checkpoint: Visual Verification APPROVED
+
+**Checkpoint type:** human-verify
+**Approved by:** User (2026-07-07)
+**Outcome:** All visual checks passed — user confirmed the UI renders correctly in the browser.
+
+Visual items confirmed:
+- VentanillaCard renders with correct layout (ticket display, remove button, label)
+- "sin turno" shown initially when no ticket assigned
+- Inline warning appears when attempting to remove a ventanilla with an active ticket
+- "Agregar ventanilla" button visible and functional
+- Ventanillas grid layout renders as expected
+- Empty-state message displayed when all ventanillas are removed
+
+Plan 03-02 is now fully complete.
 
 ## Self-Check: PASSED
 
