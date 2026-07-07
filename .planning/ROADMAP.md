@@ -107,10 +107,19 @@ Plans:
   1. User hears a beep immediately when pressing "Llamar siguiente" and a ticket is successfully taken
   2. No beep plays on page load or on reload, even though the same state change (current ticket being set) occurs during hydration
   3. No beep plays when "Llamar siguiente" is pressed on an empty queue (no ticket taken)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: TBD
+
+**Wave 1**
+- [ ] 05-01-PLAN.md — TDD RED: create useBeep stub, extend setupTests.ts with AudioContext mock, update App.test.tsx (vi.mock + 7 isQueueEmpty→queueLength prop renames + FEEDBACK-01 describe block)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+- [ ] 05-02-PLAN.md — TDD GREEN: implement useBeep.ts (lazy singleton AudioContext, 880 Hz/200ms beep with decay envelope), update App.tsx (import useBeep, rename prop isQueueEmpty→queueLength, add playBeep() in handleCallNext, update JSX prop pass-through)
+
+**Cross-cutting constraints:**
+- playBeep() must be called BEFORE onCallNext() in handleCallNext — guarantees synchrony inside the user gesture (browser autoplay policy)
+- exponentialRampToValueAtTime target must be 0.001 not 0 — spec requires positive non-zero value for exponential ramp
 
 ### Phase 6: Call Transition Animation
 **Goal**: Users see a visible, brief transition animation whenever a ventanilla's current ticket changes, giving clear visual confirmation of which window just changed
@@ -166,7 +175,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 2. Add Ticket & View Queue | 1/1 | Complete   | 2026-07-07 |
 | 3. Configurable Ventanillas | 2/2 | Complete   | 2026-07-07 |
 | 4. Call Next (Atomic Dequeue) | 2/2 | Complete    | 2026-07-07 |
-| 5. Call Sound Feedback | 0/TBD | Not started | - |
+| 5. Call Sound Feedback | 0/2 | Not started | - |
 | 6. Call Transition Animation | 0/TBD | Not started | - |
 | 7. Distance-Readable & Privacy-Safe Display | 0/TBD | Not started | - |
 | 8. Persistence Across Reloads | 0/TBD | Not started | - |
