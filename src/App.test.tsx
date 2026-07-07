@@ -1,3 +1,9 @@
+const mockPlay = vi.fn()
+
+vi.mock('./useBeep', () => ({
+  useBeep: () => ({ play: mockPlay }),
+}))
+
 import { render, screen, fireEvent, act } from '@testing-library/react'
 import { VentanillaCard } from './App'
 
@@ -8,7 +14,7 @@ describe('WINDOW-03: Per-window current ticket display', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={() => {}}
-        isQueueEmpty={false}
+        queueLength={1}
       />
     )
     expect(screen.getByText('sin turno')).toBeInTheDocument()
@@ -23,7 +29,7 @@ describe('WINDOW-02: Remove with guard', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: { id: 5, number: 5 } }}
         onRemove={onRemove}
         onCallNext={() => {}}
-        isQueueEmpty={false}
+        queueLength={1}
       />
     )
     fireEvent.click(screen.getByRole('button', { name: 'Quitar ventanilla 1' }))
@@ -38,7 +44,7 @@ describe('WINDOW-02: Remove with guard', () => {
         ventanilla={{ id: 2, number: 2, currentTicket: null }}
         onRemove={onRemove}
         onCallNext={() => {}}
-        isQueueEmpty={false}
+        queueLength={1}
       />
     )
     fireEvent.click(screen.getByRole('button', { name: 'Quitar ventanilla 2' }))
@@ -54,7 +60,7 @@ describe('CALL-01: Llamar siguiente dispatches CALL_NEXT', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={onCallNext}
-        isQueueEmpty={false}
+        queueLength={1}
       />
     )
     fireEvent.click(screen.getByRole('button', { name: /llamar siguiente/i }))
@@ -76,7 +82,7 @@ describe('CALL-02: Empty-queue warning auto-dismiss', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={() => {}}
-        isQueueEmpty={true}
+        queueLength={0}
       />
     )
     fireEvent.click(screen.getByRole('button', { name: /llamar siguiente/i }))
@@ -97,7 +103,7 @@ describe('WR-01: showWarning resets when currentTicket is cleared externally', (
         ventanilla={{ id: 1, number: 1, currentTicket: { id: 5, number: 5 } }}
         onRemove={() => {}}
         onCallNext={() => {}}
-        isQueueEmpty={false}
+        queueLength={1}
       />
     )
     fireEvent.click(screen.getByRole('button', { name: 'Quitar ventanilla 1' }))
@@ -108,9 +114,41 @@ describe('WR-01: showWarning resets when currentTicket is cleared externally', (
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={() => {}}
-        isQueueEmpty={true}
+        queueLength={0}
       />
     )
     expect(screen.queryByText('No se puede quitar: tiene un turno activo')).not.toBeInTheDocument()
+  })
+})
+
+describe('FEEDBACK-01: Beep on successful call', () => {
+  beforeEach(() => {
+    mockPlay.mockClear()
+  })
+
+  it('calls play() when queue has tickets', () => {
+    render(
+      <VentanillaCard
+        ventanilla={{ id: 1, number: 1, currentTicket: null }}
+        onRemove={() => {}}
+        onCallNext={() => {}}
+        queueLength={1}
+      />
+    )
+    fireEvent.click(screen.getByRole('button', { name: /llamar siguiente/i }))
+    expect(mockPlay).toHaveBeenCalledOnce()
+  })
+
+  it('does not call play() when queue is empty', () => {
+    render(
+      <VentanillaCard
+        ventanilla={{ id: 1, number: 1, currentTicket: null }}
+        onRemove={() => {}}
+        onCallNext={() => {}}
+        queueLength={0}
+      />
+    )
+    fireEvent.click(screen.getByRole('button', { name: /llamar siguiente/i }))
+    expect(mockPlay).not.toHaveBeenCalled()
   })
 })
