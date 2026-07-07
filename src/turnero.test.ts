@@ -81,3 +81,41 @@ describe('WINDOW-03: Per-window current ticket display', () => {
     expect(state.ventanillas).toHaveLength(1)
   })
 })
+
+describe('CALL-01: CALL_NEXT reducer', () => {
+  it('CALL-01-A: dequeues head ticket and sets it as ventanilla currentTicket', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    state = queueReducer(state, { type: 'ADD_TICKET' })
+    state = queueReducer(state, { type: 'CALL_NEXT', windowId: 1 })
+    expect(state.ventanillas[0].currentTicket?.number).toBe(1)
+    expect(state.queue).toHaveLength(0)
+  })
+
+  it('CALL-01-B: CALL_NEXT on empty queue returns state unchanged (no-op)', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    const before = state
+    state = queueReducer(state, { type: 'CALL_NEXT', windowId: 1 })
+    expect(state).toBe(before)  // referential equality — same object returned
+  })
+
+  it('CALL-01-C: CALL_NEXT replaces existing currentTicket (replace-always)', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    state = queueReducer(state, { type: 'ADD_TICKET' })  // ticket 1
+    state = queueReducer(state, { type: 'ADD_TICKET' })  // ticket 2
+    state = queueReducer(state, { type: 'CALL_NEXT', windowId: 1 })  // assigns ticket 1
+    state = queueReducer(state, { type: 'CALL_NEXT', windowId: 1 })  // replaces with ticket 2
+    expect(state.ventanillas[0].currentTicket?.number).toBe(2)
+  })
+})
+
+describe('WR-02: REMOVE_WINDOW reducer guard', () => {
+  it('WR-02-A: REMOVE_WINDOW is no-op when ventanilla has active ticket', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    state = queueReducer(state, { type: 'ADD_TICKET' })
+    state = queueReducer(state, { type: 'CALL_NEXT', windowId: 1 })
+    const before = state
+    state = queueReducer(state, { type: 'REMOVE_WINDOW', id: 1 })
+    expect(state).toBe(before)  // referential equality
+    expect(state.ventanillas).toHaveLength(1)
+  })
+})
