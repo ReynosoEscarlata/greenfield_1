@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Phase 2 plan verified (02-01-PLAN.md)
-last_updated: "2026-07-06T00:00:00.000Z"
-last_activity: 2026-06-22
+status: verifying
+stopped_at: Completed 02-add-ticket-view-queue/02-01-PLAN.md
+last_updated: "2026-07-07T02:41:25.597Z"
+last_activity: 2026-07-07
 progress:
   total_phases: 8
-  completed_phases: 1
-  total_plans: 1
-  completed_plans: 1
-  percent: 13
+  completed_phases: 2
+  total_plans: 2
+  completed_plans: 2
+  percent: 25
 ---
 
 # Project State
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-21)
 
 **Core value:** Que cualquier ventanilla pueda llamar al siguiente turno de la cola compartida y la pantalla refleje correctamente, en todo momento, cuál es el turno actual de cada ventanilla y cuáles son los próximos en espera.
-**Current focus:** Phase 1 — Project Scaffold & Visible Shell
+**Current focus:** Phase 02 — add-ticket-view-queue
 
 ## Current Position
 
-Phase: 1 of 8 (Project Scaffold & Visible Shell)
-Plan: 0 of TBD in current phase
-Status: Ready to execute
-Last activity: 2026-06-22
+Phase: 02 (add-ticket-view-queue) — EXECUTING
+Plan: 1 of 1
+Status: Phase complete — ready for verification
+Last activity: 2026-07-07
 
 Progress: [██████████] 100%
 
@@ -52,6 +52,7 @@ Progress: [██████████] 100%
 - Trend: -
 
 *Updated after each plan completion*
+| Phase 02-add-ticket-view-queue P01 | 10 | 6 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -63,6 +64,9 @@ Recent decisions affecting current work:
 - [Roadmap]: PROJECT_MODE=mvp — phases sliced vertically by user-facing capability (add ticket+view queue, configure windows, call next, sound, animation, display/privacy, persistence) rather than horizontal layers (reducer/UI/persistence/polish) suggested by research/ARCHITECTURE.md
 - [Roadmap]: Granularity=fine — 8 phases chosen deliberately to practice the full GSD phase lifecycle, not collapsed into fewer broad phases
 - [Roadmap]: Phase 1 carries no v1 requirements (foundational scaffold only); all 12 v1 requirements map 1:1 across Phases 2-8
+- [Phase ?]: nextNumber is independent of queue.length — foundational QUEUE-01 counter invariant Phase 4 depends on
+- [Phase ?]: Reducer extracted to src/turnero.ts for testability and Phase 4/8 reuse
+- [Phase ?]: CSS chip font-weight 400, button padding 12px 16px per UI-SPEC (overrides RESEARCH.md examples)
 
 ### Pending Todos
 
@@ -82,6 +86,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-06-22T03:52:39.214Z
-Stopped at: Phase 2 UI-SPEC approved
-Resume file: .planning/phases/02-add-ticket-view-queue/02-01-PLAN.md
+Last session: 2026-07-07T02:41:25.578Z
+Stopped at: Completed 02-add-ticket-view-queue/02-01-PLAN.md
+Resume file: None

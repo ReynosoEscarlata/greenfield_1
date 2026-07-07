@@ -7,8 +7,8 @@
 
 ### Cola (QUEUE)
 
-- [ ] **QUEUE-01**: Usuario puede agregar un nuevo turno a la cola con un botón "Agregar turno" (numeración automática incremental, basada en un contador independiente, no en la longitud de la cola)
-- [ ] **QUEUE-02**: Usuario puede ver la lista ordenada de turnos en espera (los próximos a ser llamados)
+- [x] **QUEUE-01**: Usuario puede agregar un nuevo turno a la cola con un botón "Agregar turno" (numeración automática incremental, basada en un contador independiente, no en la longitud de la cola)
+- [x] **QUEUE-02**: Usuario puede ver la lista ordenada de turnos en espera (los próximos a ser llamados)
 
 ### Ventanillas (WINDOW)
 
@@ -70,8 +70,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| QUEUE-01 | Phase 2 | Pending |
-| QUEUE-02 | Phase 2 | Pending |
+| QUEUE-01 | Phase 2 | Complete |
+| QUEUE-02 | Phase 2 | Complete |
 | WINDOW-01 | Phase 3 | Pending |
 | WINDOW-02 | Phase 3 | Pending |
 | WINDOW-03 | Phase 3 | Pending |
