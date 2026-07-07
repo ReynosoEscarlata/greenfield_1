@@ -84,10 +84,19 @@ Plans:
   1. User presses "Llamar siguiente" on a ventanilla and that ventanilla's current ticket updates to the head of the queue, which is simultaneously removed from the visible queue
   2. Rapidly pressing "Llamar siguiente" on two different ventanillas never assigns the same ticket to both
   3. If the queue is empty when "Llamar siguiente" is pressed, the user sees a message stating there are no waiting tickets, and the button remains usable afterward
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: TBD
+
+**Wave 1**
+- [ ] 04-01-PLAN.md — Write RED tests (turnero.test.ts CALL-01/WR-02 unit tests + App.test.tsx CALL-01/CALL-02/WR-01 integration tests + update existing tests with new required props); implement CALL_NEXT reducer case and WR-02 REMOVE_WINDOW guard in turnero.ts
+
+**Wave 2** *(blocked on Wave 1 completion)*
+- [ ] 04-02-PLAN.md — Extend VentanillaCard in App.tsx (onCallNext + isQueueEmpty props, WR-01 useEffect, CALL-02 useEffect, handleCallNext, Llamar siguiente button + empty-queue warning JSX, App dispatch wiring); add .call-next-button CSS; visual checkpoint
+
+**Cross-cutting constraints:**
+- CALL_NEXT must land in turnero.ts before App.tsx wires dispatch — TypeScript enforces the QueueAction union at the call site
+- Existing App.test.tsx VentanillaCard renders must receive onCallNext and isQueueEmpty in Wave 1 to prevent TypeScript errors when Wave 2 extends the prop signature
 
 ### Phase 5: Call Sound Feedback
 **Goal**: Users hear an audible beep at the exact moment a ventanilla successfully calls a ticket, reinforcing the call event without affecting page-load or reload behavior
@@ -156,7 +165,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 1. Project Scaffold & Visible Shell | 1/1 | Complete   | 2026-06-22 |
 | 2. Add Ticket & View Queue | 1/1 | Complete   | 2026-07-07 |
 | 3. Configurable Ventanillas | 2/2 | Complete   | 2026-07-07 |
-| 4. Call Next (Atomic Dequeue) | 0/TBD | Not started | - |
+| 4. Call Next (Atomic Dequeue) | 0/2 | Not started | - |
 | 5. Call Sound Feedback | 0/TBD | Not started | - |
 | 6. Call Transition Animation | 0/TBD | Not started | - |
 | 7. Distance-Readable & Privacy-Safe Display | 0/TBD | Not started | - |
