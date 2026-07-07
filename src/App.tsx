@@ -1,15 +1,34 @@
-import { useState, useReducer } from 'react'
+import { useState, useReducer, useEffect } from 'react'
 import { queueReducer, initialState } from './turnero'
 import type { Ventanilla } from './turnero'
 
 export function VentanillaCard({
   ventanilla,
   onRemove,
+  onCallNext,
+  isQueueEmpty,
 }: Readonly<{
   ventanilla: Ventanilla
   onRemove: (id: number) => void
+  onCallNext: (id: number) => void
+  isQueueEmpty: boolean
 }>) {
   const [showWarning, setShowWarning] = useState(false)
+  const [showEmptyWarning, setShowEmptyWarning] = useState(false)
+
+  // WR-01 fix: reset removal warning when currentTicket is cleared externally
+  useEffect(() => {
+    if (ventanilla.currentTicket === null) {
+      setShowWarning(false)
+    }
+  }, [ventanilla.currentTicket])
+
+  // CALL-02: auto-dismiss empty-queue warning after 2 seconds
+  useEffect(() => {
+    if (!showEmptyWarning) return
+    const timer = setTimeout(() => setShowEmptyWarning(false), 2000)
+    return () => clearTimeout(timer)
+  }, [showEmptyWarning])
 
   function handleRemove() {
     if (ventanilla.currentTicket !== null) {
@@ -18,6 +37,14 @@ export function VentanillaCard({
     }
     setShowWarning(false)
     onRemove(ventanilla.id)
+  }
+
+  function handleCallNext() {
+    if (isQueueEmpty) {
+      setShowEmptyWarning(true)
+      return
+    }
+    onCallNext(ventanilla.id)
   }
 
   return (
@@ -36,10 +63,16 @@ export function VentanillaCard({
           ? 'sin turno'
           : `Turno ${ventanilla.currentTicket.number}`}
       </p>
+      <button type="button" className="call-next-button" onClick={handleCallNext}>
+        Llamar siguiente
+      </button>
       {showWarning && (
         <p className="ventanilla-warning">
           No se puede quitar: tiene un turno activo
         </p>
+      )}
+      {showEmptyWarning && (
+        <p className="ventanilla-warning">No hay turnos en espera</p>
       )}
     </div>
   )
@@ -92,6 +125,8 @@ function App() {
                 key={v.id}
                 ventanilla={v}
                 onRemove={(id) => dispatch({ type: 'REMOVE_WINDOW', id })}
+                onCallNext={(id) => dispatch({ type: 'CALL_NEXT', windowId: id })}
+                isQueueEmpty={state.queue.length === 0}
               />
             ))
           )}
