@@ -36,3 +36,48 @@ describe('QUEUE-02: Ordered waiting list', () => {
     expect(initialState.queue).toHaveLength(0)
   })
 })
+
+describe('WINDOW-01: Add windows', () => {
+  it('WINDOW-01-A: ADD_WINDOW adds a ventanilla with number 1 to empty state', () => {
+    const state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    expect(state.ventanillas).toHaveLength(1)
+    expect(state.ventanillas[0].number).toBe(1)
+  })
+
+  it('WINDOW-01-B: nextWindowNumber increments with each ADD_WINDOW', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    state = queueReducer(state, { type: 'ADD_WINDOW' })
+    expect(state.ventanillas[0].number).toBe(1)
+    expect(state.ventanillas[1].number).toBe(2)
+  })
+
+  it('WINDOW-01-C: counter never reuses a number after removal (D-10)', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })  // Ventanilla 1
+    state = queueReducer(state, { type: 'ADD_WINDOW' })              // Ventanilla 2
+    state = queueReducer(state, { type: 'REMOVE_WINDOW', id: 1 })   // remove Ventanilla 1
+    state = queueReducer(state, { type: 'ADD_WINDOW' })              // should be Ventanilla 3
+    expect(state.ventanillas.map(v => v.number)).toContain(3)
+    expect(state.ventanillas.map(v => v.number)).not.toContain(1)
+  })
+})
+
+describe('WINDOW-02: Remove with guard', () => {
+  it('WINDOW-02-A: REMOVE_WINDOW removes the ventanilla when currentTicket is null', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    state = queueReducer(state, { type: 'REMOVE_WINDOW', id: 1 })
+    expect(state.ventanillas).toHaveLength(0)
+  })
+})
+
+describe('WINDOW-03: Per-window current ticket display', () => {
+  it('WINDOW-03-A: new ventanilla has currentTicket = null', () => {
+    const state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    expect(state.ventanillas[0].currentTicket).toBeNull()
+  })
+
+  it('Regression — ADD_TICKET spread: ADD_WINDOW then ADD_TICKET preserves ventanillas', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    state = queueReducer(state, { type: 'ADD_TICKET' })
+    expect(state.ventanillas).toHaveLength(1)
+  })
+})
