@@ -30,7 +30,7 @@ body {
 }
 
 .queue-strip h2,
-.ventanillas-grid h2 {
+.ventanillas-section h2 {
   font-size: 20px;
   font-weight: 600;
   line-height: 1.2;
@@ -39,7 +39,7 @@ body {
 }
 
 .queue-strip p,
-.ventanillas-grid p {
+.ventanillas-section p {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
@@ -85,4 +85,69 @@ body {
   padding: 8px 16px;
   font-size: 16px;
   font-weight: 400;
+}
+
+.ventanillas-section {
+  margin-top: 24px;
+}
+
+.add-window-button {
+  background: #f1f3f5;
+  color: #1f2933;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0 0 16px;
+}
+
+.ventanilla-card {
+  position: relative;
+}
+
+.ventanilla-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2933;
+  margin: 0 0 4px;
+}
+
+.ventanilla-ticket {
+  font-size: 16px;
+  font-weight: 400;
+  color: #1f2933;
+  margin: 0;
+}
+
+.ventanilla-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #6b7c93;
+  line-height: 1;
+  padding: 0;
+}
+
+.ventanilla-remove:hover {
+  color: #1f2933;
+}
+
+.ventanilla-warning {
+  font-size: 13px;
+  color: #c0392b;
+  margin: 6px 0 0;
+}
+
+.ventanillas-empty {
+  font-size: 16px;
+  font-weight: 400;
+  color: #1f2933;
+  margin: 0;
+  grid-column: 1 / -1;
 }
