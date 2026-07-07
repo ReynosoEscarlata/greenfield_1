@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Project Scaffold & Visible Shell** - App boots with Vite/React/TS and renders a static page shell in the browser (completed 2026-06-22)
 - [x] **Phase 2: Add Ticket & View Queue** - User can add tickets and see them appear in the ordered waiting queue end-to-end (completed 2026-07-07)
-- [ ] **Phase 3: Configurable Ventanillas** - User can add/remove windows and see each window's current-ticket state, including the empty state
+- [x] **Phase 3: Configurable Ventanillas** - User can add/remove windows and see each window's current-ticket state, including the empty state (completed 2026-07-07)
 - [ ] **Phase 4: Call Next (Atomic Dequeue)** - User can press "Llamar siguiente" on any window to atomically pull the next ticket from the shared queue, including the empty-queue case
 - [ ] **Phase 5: Call Sound Feedback** - User hears a beep synchronously when a call action takes a ticket
 - [ ] **Phase 6: Call Transition Animation** - User sees a visual transition animation when a window's current ticket changes
@@ -69,7 +69,7 @@ Plans:
 - [x] 03-01-PLAN.md — Extend turnero.ts (Ventanilla type, QueueState, ADD_TICKET spread fix, ADD_WINDOW/REMOVE_WINDOW), extend turnero.test.ts (WINDOW-01/02/03 unit tests), create App.test.tsx scaffold (failing integration tests), add test script to package.json (completed 2026-07-07)
 
 **Wave 2** *(blocked on Wave 1 completion)*
-- [ ] 03-02-PLAN.md — Update App.tsx (VentanillaCard component, ventanillas section, Agregar ventanilla button, WINDOW-02 guard), update index.css (migrate stale selectors, add card/button/warning styles), visual checkpoint
+- [x] 03-02-PLAN.md — Update App.tsx (VentanillaCard component, ventanillas section, Agregar ventanilla button, WINDOW-02 guard), update index.css (migrate stale selectors, add card/button/warning styles), visual checkpoint
 
 **Cross-cutting constraints:**
 - `ADD_TICKET` spread fix must land in Wave 1 — without it, any window add followed by ticket add silently drops ventanilla state
@@ -155,7 +155,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 |-------|----------------|--------|-----------|
 | 1. Project Scaffold & Visible Shell | 1/1 | Complete   | 2026-06-22 |
 | 2. Add Ticket & View Queue | 1/1 | Complete   | 2026-07-07 |
-| 3. Configurable Ventanillas | 1/2 | In Progress | - |
+| 3. Configurable Ventanillas | 2/2 | Complete   | 2026-07-07 |
 | 4. Call Next (Atomic Dequeue) | 0/TBD | Not started | - |
 | 5. Call Sound Feedback | 0/TBD | Not started | - |
 | 6. Call Transition Animation | 0/TBD | Not started | - |
