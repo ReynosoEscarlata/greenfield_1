@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 5 planned
-last_updated: "2026-07-07T23:45:00.000Z"
+status: executing
+stopped_at: Phase 5 Plan 01 complete — RED phase done
+last_updated: "2026-07-07T00:00:00.000Z"
 last_activity: 2026-07-07
 progress:
   total_phases: 8
   completed_phases: 4
-  total_plans: 8
-  completed_plans: 6
-  percent: 50
+  total_plans: 9
+  completed_plans: 7
+  percent: 78
 ---
 
 # Project State
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-06-21)
 ## Current Position
 
 Phase: 5
-Plan: 2 plans (05-01, 05-02)
-Status: Ready to execute
+Plan: 05-01 complete — 05-02 next
+Status: Plan 05-01 executed (RED committed); ready for Plan 05-02 (GREEN)
 Last activity: 2026-07-07
 
 Progress: [██████████] 100%
@@ -71,6 +71,8 @@ Recent decisions affecting current work:
 - [Phase 3 P01]: ADD_TICKET case spreads ...state to preserve all QueueState fields (T-03-01 mitigation)
 - [Phase 3 P01]: REMOVE_WINDOW is unconditional in reducer; WINDOW-02 guard lives in VentanillaCard UI component
 - [Phase 3 P01]: Ventanilla type named Ventanilla (not Window) to avoid TypeScript global shadowing
+- [Phase 5 P01]: useBeep stub uses void audioCtx idiom to reference module-level var without linter-disable comment
+- [Phase 5 P01]: All 7 isQueueEmpty prop refs replaced in tests before component update — RED = prop-type mismatch + missing hook call
 
 ### Pending Todos
 
@@ -90,6 +92,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-07-07T23:45:00.000Z
-Stopped at: Phase 5 planned — 2 plans ready
-Resume file: .planning/phases/05-call-sound-feedback/05-01-PLAN.md
+Last session: 2026-07-07T00:00:00.000Z
+Stopped at: Phase 5 Plan 01 complete — RED tests written, 2 failing tests confirm contract
+Resume file: .planning/phases/05-call-sound-feedback/05-02-PLAN.md

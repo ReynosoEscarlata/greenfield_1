@@ -112,7 +112,7 @@ Plans:
 Plans:
 
 **Wave 1**
-- [ ] 05-01-PLAN.md — TDD RED: create useBeep stub, extend setupTests.ts with AudioContext mock, update App.test.tsx (vi.mock + 7 isQueueEmpty→queueLength prop renames + FEEDBACK-01 describe block)
+- [x] 05-01-PLAN.md — TDD RED: create useBeep stub, extend setupTests.ts with AudioContext mock, update App.test.tsx (vi.mock + 7 isQueueEmpty→queueLength prop renames + FEEDBACK-01 describe block)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 05-02-PLAN.md — TDD GREEN: implement useBeep.ts (lazy singleton AudioContext, 880 Hz/200ms beep with decay envelope), update App.tsx (import useBeep, rename prop isQueueEmpty→queueLength, add playBeep() in handleCallNext, update JSX prop pass-through)
