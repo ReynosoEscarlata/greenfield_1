@@ -144,6 +144,19 @@ body {
   margin: 6px 0 0;
 }
 
+.call-next-button {
+  background: #f1f3f5;
+  color: #1f2933;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 8px 0 0;
+  width: 100%;
+}
+
 .ventanillas-empty {
   font-size: 16px;
   font-weight: 400;
