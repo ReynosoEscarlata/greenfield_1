@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 3 planned — 2 plans in 2 waves
-last_updated: "2026-07-07T00:00:00.000Z"
+status: executing
+stopped_at: Phase 3 Plan 01 complete — state extension + test scaffold
+last_updated: "2026-07-07T17:47:00.000Z"
 last_activity: 2026-07-07
 progress:
   total_phases: 8
   completed_phases: 2
-  total_plans: 4
-  completed_plans: 2
-  percent: 25
+  total_plans: 5
+  completed_plans: 4
+  percent: 50
 ---
 
 # Project State
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-06-21)
 ## Current Position
 
 Phase: 3
-Plan: Ready to execute (2 plans)
-Status: Ready to execute
+Plan: 1 of 2 complete (executing Plan 02 next)
+Status: Executing
 Last activity: 2026-07-07
 
 Progress: [██████████] 100%
@@ -36,7 +36,7 @@ Progress: [██████████] 100%
 
 **Velocity:**
 
-- Total plans completed: 1
+- Total plans completed: 4
 - Average duration: - min
 - Total execution time: 0 hours
 
@@ -67,6 +67,9 @@ Recent decisions affecting current work:
 - [Phase ?]: nextNumber is independent of queue.length — foundational QUEUE-01 counter invariant Phase 4 depends on
 - [Phase ?]: Reducer extracted to src/turnero.ts for testability and Phase 4/8 reuse
 - [Phase ?]: CSS chip font-weight 400, button padding 12px 16px per UI-SPEC (overrides RESEARCH.md examples)
+- [Phase 3 P01]: ADD_TICKET case spreads ...state to preserve all QueueState fields (T-03-01 mitigation)
+- [Phase 3 P01]: REMOVE_WINDOW is unconditional in reducer; WINDOW-02 guard lives in VentanillaCard UI component
+- [Phase 3 P01]: Ventanilla type named Ventanilla (not Window) to avoid TypeScript global shadowing
 
 ### Pending Todos
 
@@ -86,6 +89,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-07-07T03:17:58.472Z
-Stopped at: Phase 3 context gathered
-Resume file: .planning/phases/03-configurable-ventanillas/03-CONTEXT.md
+Last session: 2026-07-07T17:47:00.000Z
+Stopped at: Phase 3 Plan 01 complete — ready for Plan 02 execution
+Resume file: .planning/phases/03-configurable-ventanillas/03-02-PLAN.md

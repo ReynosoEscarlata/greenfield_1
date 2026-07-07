@@ -12,9 +12,9 @@
 
 ### Ventanillas (WINDOW)
 
-- [ ] **WINDOW-01**: Usuario puede configurar dinámicamente la cantidad de ventanillas (agregar nuevas ventanillas)
-- [ ] **WINDOW-02**: Usuario puede quitar una ventanilla, salvo que tenga un turno actual activo mostrado (la app debe bloquear/avisar en ese caso)
-- [ ] **WINDOW-03**: Cada ventanilla muestra su turno actual, o un estado vacío ("sin turno") si nunca llamó ninguno
+- [x] **WINDOW-01**: Usuario puede configurar dinámicamente la cantidad de ventanillas (agregar nuevas ventanillas)
+- [x] **WINDOW-02**: Usuario puede quitar una ventanilla, salvo que tenga un turno actual activo mostrado (la app debe bloquear/avisar en ese caso)
+- [x] **WINDOW-03**: Cada ventanilla muestra su turno actual, o un estado vacío ("sin turno") si nunca llamó ninguno
 
 ### Llamado (CALL)
 
@@ -72,9 +72,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | QUEUE-01 | Phase 2 | Complete |
 | QUEUE-02 | Phase 2 | Complete |
-| WINDOW-01 | Phase 3 | Pending |
-| WINDOW-02 | Phase 3 | Pending |
-| WINDOW-03 | Phase 3 | Pending |
+| WINDOW-01 | Phase 3 | Complete |
+| WINDOW-02 | Phase 3 | Complete |
+| WINDOW-03 | Phase 3 | Complete |
 | CALL-01 | Phase 4 | Pending |
 | CALL-02 | Phase 4 | Pending |
 | FEEDBACK-01 | Phase 5 | Pending |

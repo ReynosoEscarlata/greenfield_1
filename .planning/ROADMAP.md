@@ -66,7 +66,7 @@ Plans:
 Plans:
 
 **Wave 1**
-- [ ] 03-01-PLAN.md — Extend turnero.ts (Ventanilla type, QueueState, ADD_TICKET spread fix, ADD_WINDOW/REMOVE_WINDOW), extend turnero.test.ts (WINDOW-01/02/03 unit tests), create App.test.tsx scaffold (failing integration tests), add test script to package.json
+- [x] 03-01-PLAN.md — Extend turnero.ts (Ventanilla type, QueueState, ADD_TICKET spread fix, ADD_WINDOW/REMOVE_WINDOW), extend turnero.test.ts (WINDOW-01/02/03 unit tests), create App.test.tsx scaffold (failing integration tests), add test script to package.json (completed 2026-07-07)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 03-02-PLAN.md — Update App.tsx (VentanillaCard component, ventanillas section, Agregar ventanilla button, WINDOW-02 guard), update index.css (migrate stale selectors, add card/button/warning styles), visual checkpoint
@@ -155,7 +155,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 |-------|----------------|--------|-----------|
 | 1. Project Scaffold & Visible Shell | 1/1 | Complete   | 2026-06-22 |
 | 2. Add Ticket & View Queue | 1/1 | Complete   | 2026-07-07 |
-| 3. Configurable Ventanillas | 0/2 | Planned | - |
+| 3. Configurable Ventanillas | 1/2 | In Progress | - |
 | 4. Call Next (Atomic Dequeue) | 0/TBD | Not started | - |
 | 5. Call Sound Feedback | 0/TBD | Not started | - |
 | 6. Call Transition Animation | 0/TBD | Not started | - |
