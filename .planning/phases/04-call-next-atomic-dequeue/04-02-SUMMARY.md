@@ -103,15 +103,14 @@ No new network endpoints, auth paths, file access patterns, or schema changes in
 
 None — no placeholder data, hardcoded empty values, or unconnected components.
 
-## User Setup Required (Checkpoint Pending)
+## Visual Checkpoint: APPROVED
 
-Visual verification required before Phase 4 is considered complete. User must:
+User verified all four browser tests on 2026-07-07:
 
-1. Run `npm run dev` and open http://localhost:5173
-2. Test A: Confirm "Llamar siguiente" button appears full-width at bottom of every VentanillaCard
-3. Test B: Add tickets, click "Llamar siguiente" — confirm ticket moves from queue to ventanilla display
-4. Test C: Click "Llamar siguiente" on empty queue — "No hay turnos en espera" appears and auto-dismisses in 2 seconds
-5. Test D: WR-01 regression — removal warning disappears when CALL_NEXT clears the active ticket
+- Test A: "Llamar siguiente" button appeared full-width at the bottom of every VentanillaCard (D-07, D-01 confirmed)
+- Test B: Clicking "Llamar siguiente" moved tickets from queue to ventanilla display, replacing any existing ticket (CALL-01 confirmed)
+- Test C: Clicking on empty queue showed "No hay turnos en espera" inline, auto-dismissed after 2 seconds (CALL-02 confirmed)
+- Test D: WR-01 regression — removal warning correctly disappeared when CALL_NEXT cleared the active ticket (WR-01 confirmed)
 
 ## Self-Check: PASSED
 
