@@ -31,11 +31,11 @@ export type QueueState = {
 }
 
 // QueueAction is a discriminated union.
-// Phase 4 extension point: add { type: 'CALL_NEXT'; windowId: number } here.
 export type QueueAction =
   | { type: 'ADD_TICKET' }
   | { type: 'ADD_WINDOW' }
   | { type: 'REMOVE_WINDOW'; id: number }
+  | { type: 'CALL_NEXT'; windowId: number }
 
 export const initialState: QueueState = {
   queue: [],
@@ -74,11 +74,26 @@ export function queueReducer(state: QueueState, action: QueueAction): QueueState
       }
     }
     case 'REMOVE_WINDOW': {
-      // Removes unconditionally — the WINDOW-02 guard lives in VentanillaCard (UI layer).
-      // See RESEARCH.md Pattern 3 and STRIDE T-03-02 for rationale.
+      const target = state.ventanillas.find((v) => v.id === action.id)
+      if (target !== undefined && target.currentTicket !== null) {
+        return state  // no-op: data-loss prevention (WR-02 fix, T-04-01 mitigation)
+      }
       return {
         ...state,
         ventanillas: state.ventanillas.filter((v) => v.id !== action.id),
+      }
+    }
+    case 'CALL_NEXT': {
+      if (state.queue.length === 0) return state  // no-op: UI handles feedback
+      const [nextTicket, ...remainingQueue] = state.queue
+      return {
+        ...state,
+        queue: remainingQueue,
+        ventanillas: state.ventanillas.map((v) =>
+          v.id === action.windowId
+            ? { ...v, currentTicket: nextTicket }
+            : v
+        ),
       }
     }
     default:
