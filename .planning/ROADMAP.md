@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Project Scaffold & Visible Shell** - App boots with Vite/React/TS and renders a static page shell in the browser (completed 2026-06-22)
 - [x] **Phase 2: Add Ticket & View Queue** - User can add tickets and see them appear in the ordered waiting queue end-to-end (completed 2026-07-07)
 - [x] **Phase 3: Configurable Ventanillas** - User can add/remove windows and see each window's current-ticket state, including the empty state (completed 2026-07-07)
-- [ ] **Phase 4: Call Next (Atomic Dequeue)** - User can press "Llamar siguiente" on any window to atomically pull the next ticket from the shared queue, including the empty-queue case
+- [x] **Phase 4: Call Next (Atomic Dequeue)** - User can press "Llamar siguiente" on any window to atomically pull the next ticket from the shared queue, including the empty-queue case (completed 2026-07-07)
 - [ ] **Phase 5: Call Sound Feedback** - User hears a beep synchronously when a call action takes a ticket
 - [ ] **Phase 6: Call Transition Animation** - User sees a visual transition animation when a window's current ticket changes
 - [ ] **Phase 7: Distance-Readable & Privacy-Safe Display** - User can read ticket numbers from across a room, and the screen never reveals patient-identifying data
@@ -89,10 +89,10 @@ Plans:
 Plans:
 
 **Wave 1**
-- [ ] 04-01-PLAN.md — Write RED tests (turnero.test.ts CALL-01/WR-02 unit tests + App.test.tsx CALL-01/CALL-02/WR-01 integration tests + update existing tests with new required props); implement CALL_NEXT reducer case and WR-02 REMOVE_WINDOW guard in turnero.ts
+- [x] 04-01-PLAN.md — Write RED tests (turnero.test.ts CALL-01/WR-02 unit tests + App.test.tsx CALL-01/CALL-02/WR-01 integration tests + update existing tests with new required props); implement CALL_NEXT reducer case and WR-02 REMOVE_WINDOW guard in turnero.ts
 
 **Wave 2** *(blocked on Wave 1 completion)*
-- [ ] 04-02-PLAN.md — Extend VentanillaCard in App.tsx (onCallNext + isQueueEmpty props, WR-01 useEffect, CALL-02 useEffect, handleCallNext, Llamar siguiente button + empty-queue warning JSX, App dispatch wiring); add .call-next-button CSS; visual checkpoint
+- [x] 04-02-PLAN.md — Extend VentanillaCard in App.tsx (onCallNext + isQueueEmpty props, WR-01 useEffect, CALL-02 useEffect, handleCallNext, Llamar siguiente button + empty-queue warning JSX, App dispatch wiring); add .call-next-button CSS; visual checkpoint
 
 **Cross-cutting constraints:**
 - CALL_NEXT must land in turnero.ts before App.tsx wires dispatch — TypeScript enforces the QueueAction union at the call site
@@ -165,7 +165,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 1. Project Scaffold & Visible Shell | 1/1 | Complete   | 2026-06-22 |
 | 2. Add Ticket & View Queue | 1/1 | Complete   | 2026-07-07 |
 | 3. Configurable Ventanillas | 2/2 | Complete   | 2026-07-07 |
-| 4. Call Next (Atomic Dequeue) | 0/2 | Not started | - |
+| 4. Call Next (Atomic Dequeue) | 2/2 | Complete   | 2026-07-07 |
 | 5. Call Sound Feedback | 0/TBD | Not started | - |
 | 6. Call Transition Animation | 0/TBD | Not started | - |
 | 7. Distance-Readable & Privacy-Safe Display | 0/TBD | Not started | - |
