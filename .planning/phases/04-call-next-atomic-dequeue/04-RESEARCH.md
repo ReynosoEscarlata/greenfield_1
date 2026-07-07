@@ -547,22 +547,16 @@ The "atomic" guarantee comes from JavaScript's serialized execution model, not f
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **`isQueueEmpty` prop name**
-   - What we know: VentanillaCard needs to know if the queue is empty to show CALL-02 feedback; D-08 only mentions `onCallNext: (id: number) => void`.
-   - What's unclear: The CONTEXT does not explicitly name the prop that communicates queue emptiness to VentanillaCard. The prop is implied but not named.
-   - Recommendation: Use `isQueueEmpty: boolean` prop, computed in App.tsx as `state.queue.length === 0`. Planner should verify this is consistent with D-08's intent (adding a second prop alongside `onCallNext` rather than changing `onCallNext`'s signature).
+   - RESOLVED: `isQueueEmpty: boolean`, computed in App.tsx as `state.queue.length === 0`. Plans implement this in 04-02 Task 1 Location 2.
 
 2. **CSS class name for "Llamar siguiente" button**
-   - What we know: D-07 says full-width; Claude's Discretion governs styling beyond that.
-   - What's unclear: Should the button reuse `.add-ticket-button` / `.add-window-button` class or get its own `.call-next-button`?
-   - Recommendation: Use `.call-next-button` as a new class, add to index.css following `.add-window-button` as the reference. Allows per-button color differentiation in later phases (e.g., a call button that turns green or blue to signal action).
+   - RESOLVED: `.call-next-button` (new class). Plans add it to index.css in 04-02 Task 1.
 
 3. **CSS class for `"No hay turnos en espera"` message**
-   - What we know: Same inline position as `.ventanilla-warning`; same font-size/color convention.
-   - What's unclear: Reuse `.ventanilla-warning` (same red color, implies an error) or add `.ventanilla-info` (different color, implies informational)?
-   - Recommendation: Reuse `.ventanilla-warning` for now — the color distinction is a Phase 6+ UX concern. Keeps CSS delta minimal.
+   - RESOLVED: Reuse `.ventanilla-warning` for now — color distinction deferred to Phase 6. Plans implement this in 04-02 Task 1 Location 6.
 
 ---
 
