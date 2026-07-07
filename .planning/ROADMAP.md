@@ -61,10 +61,11 @@ Plans:
   2. User can remove a ventanilla that has no active current ticket
   3. If a user tries to remove a ventanilla that has an active current ticket, the app blocks the removal and shows a warning instead of silently discarding the ticket
   4. Each ventanilla visibly shows "sin turno" until it has called a ticket at least once
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
+- [ ] 03-01-PLAN.md — Extend turnero.ts (Ventanilla type, QueueState, ADD_TICKET spread fix, ADD_WINDOW/REMOVE_WINDOW), extend turnero.test.ts (WINDOW-01/02/03 unit tests), create App.test.tsx scaffold (failing integration tests), add test script to package.json
+- [ ] 03-02-PLAN.md — Update App.tsx (VentanillaCard component, ventanillas section, Agregar ventanilla button, WINDOW-02 guard), update index.css (migrate stale selectors, add card/button/warning styles), visual checkpoint
 
 ### Phase 4: Call Next (Atomic Dequeue)
 **Goal**: Users can press "Llamar siguiente" on any ventanilla and reliably take the next ticket from the shared queue with no possibility of duplicate or skipped tickets across simultaneous clicks, completing the Core Value end-to-end
@@ -146,7 +147,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 |-------|----------------|--------|-----------|
 | 1. Project Scaffold & Visible Shell | 1/1 | Complete   | 2026-06-22 |
 | 2. Add Ticket & View Queue | 1/1 | Complete   | 2026-07-07 |
-| 3. Configurable Ventanillas | 0/TBD | Not started | - |
+| 3. Configurable Ventanillas | 0/2 | Not started | - |
 | 4. Call Next (Atomic Dequeue) | 0/TBD | Not started | - |
 | 5. Call Sound Feedback | 0/TBD | Not started | - |
 | 6. Call Transition Animation | 0/TBD | Not started | - |
