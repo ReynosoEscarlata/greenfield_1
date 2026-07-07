@@ -1,5 +1,49 @@
-import { useReducer } from 'react'
+import { useState, useReducer } from 'react'
 import { queueReducer, initialState } from './turnero'
+import type { Ventanilla } from './turnero'
+
+export function VentanillaCard({
+  ventanilla,
+  onRemove,
+}: Readonly<{
+  ventanilla: Ventanilla
+  onRemove: (id: number) => void
+}>) {
+  const [showWarning, setShowWarning] = useState(false)
+
+  function handleRemove() {
+    if (ventanilla.currentTicket !== null) {
+      setShowWarning(true)
+      return
+    }
+    setShowWarning(false)
+    onRemove(ventanilla.id)
+  }
+
+  return (
+    <div className="ventanilla-card">
+      <button
+        type="button"
+        className="ventanilla-remove"
+        onClick={handleRemove}
+        aria-label={`Quitar ventanilla ${ventanilla.number}`}
+      >
+        ×
+      </button>
+      <h3 className="ventanilla-label">Ventanilla {ventanilla.number}</h3>
+      <p className="ventanilla-ticket">
+        {ventanilla.currentTicket === null
+          ? 'sin turno'
+          : `Turno ${ventanilla.currentTicket.number}`}
+      </p>
+      {showWarning && (
+        <p className="ventanilla-warning">
+          No se puede quitar: tiene un turno activo
+        </p>
+      )}
+    </div>
+  )
+}
 
 function App() {
   const [state, dispatch] = useReducer(queueReducer, initialState)
@@ -28,9 +72,30 @@ function App() {
           </ul>
         )}
       </section>
-      <section className="ventanillas-grid">
+      <section className="ventanillas-section">
         <h2>Ventanillas</h2>
-        <p>Las ventanillas configuradas aparecerán aquí</p>
+        <button
+          type="button"
+          className="add-window-button"
+          onClick={() => dispatch({ type: 'ADD_WINDOW' })}
+        >
+          Agregar ventanilla
+        </button>
+        <div className="ventanillas-grid">
+          {state.ventanillas.length === 0 ? (
+            <p className="ventanillas-empty">
+              Presiona Agregar ventanilla para comenzar
+            </p>
+          ) : (
+            state.ventanillas.map((v) => (
+              <VentanillaCard
+                key={v.id}
+                ventanilla={v}
+                onRemove={(id) => dispatch({ type: 'REMOVE_WINDOW', id })}
+              />
+            ))
+          )}
+        </div>
       </section>
     </div>
   )
