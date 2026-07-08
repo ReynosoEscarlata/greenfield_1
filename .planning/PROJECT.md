@@ -19,8 +19,8 @@ Que cualquier ventanilla pueda llamar al siguiente turno de la cola compartida y
 - [x] Usuario puede presionar "Llamar siguiente" en una ventanilla para tomar el próximo turno de la cola compartida — Validated in Phase 4: Call Next (Atomic Dequeue)
 
 ### Active
-- [ ] Al llamar un turno se reproduce un sonido/beep
-- [ ] Al cambiar el turno actual de una ventanilla se muestra una pequeña animación de transición
+- [x] Al llamar un turno se reproduce un sonido/beep — Validated in Phase 5: Call Sound
+- [x] Al cambiar el turno actual de una ventanilla se muestra una pequeña animación de transición — Validated in Phase 6: Call Transition Animation
 - [ ] El estado de la cola y las ventanillas persiste en el navegador (localStorage) entre recargas de página
 
 ### Out of Scope
@@ -71,4 +71,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-07 after Phase 4: Call Next (Atomic Dequeue) — Core Value delivered, 21/21 tests GREEN*
+*Last updated: 2026-07-08 after Phase 6: Call Transition Animation — amber ticket-flash animation delivered, 26/26 tests GREEN*
