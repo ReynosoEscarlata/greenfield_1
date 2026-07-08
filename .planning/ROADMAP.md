@@ -135,7 +135,7 @@ Plans:
 Plans:
 
 **Wave 1**
-- [ ] 06-01-PLAN.md — TDD RED: append FEEDBACK-02 describe block (3 test cases) to App.test.tsx; tests must fail because flash class not yet applied in VentanillaCard
+- [x] 06-01-PLAN.md — TDD RED: append FEEDBACK-02 describe block (3 test cases) to App.test.tsx; tests must fail because flash class not yet applied in VentanillaCard
 
 **Wave 2** *(blocked on Wave 1 RED confirmation)*
 - [ ] 06-02-PLAN.md — TDD GREEN: add @keyframes ticket-flash + .ventanilla-ticket-flash to index.css; add key prop + conditional flash className to VentanillaCard <p> in App.tsx; visual checkpoint
@@ -185,6 +185,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 3. Configurable Ventanillas | 2/2 | Complete   | 2026-07-07 |
 | 4. Call Next (Atomic Dequeue) | 2/2 | Complete    | 2026-07-07 |
 | 5. Call Sound Feedback | 2/2 | Complete   | 2026-07-08 |
-| 6. Call Transition Animation | 0/2 | Not started | - |
+| 6. Call Transition Animation | 1/2 | In Progress|  |
 | 7. Distance-Readable & Privacy-Safe Display | 0/TBD | Not started | - |
 | 8. Persistence Across Reloads | 0/TBD | Not started | - |
