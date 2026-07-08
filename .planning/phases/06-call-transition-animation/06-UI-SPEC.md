@@ -1,7 +1,7 @@
 ---
 phase: 6
 slug: call-transition-animation
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: 2026-07-07
@@ -211,11 +211,11 @@ No other files change. `turnero.ts`, `useBeep.ts`, `setupTests.ts`, and test fil
 
 ## Checker Sign-Off
 
-- [ ] Dimension 1 Copywriting: PASS
-- [ ] Dimension 2 Visuals: PASS
-- [ ] Dimension 3 Color: PASS
-- [ ] Dimension 4 Typography: PASS
-- [ ] Dimension 5 Spacing: PASS
-- [ ] Dimension 6 Registry Safety: PASS
+- [x] Dimension 1 Copywriting: PASS
+- [x] Dimension 2 Visuals: PASS
+- [x] Dimension 3 Color: PASS
+- [x] Dimension 4 Typography: FLAG — buttons documented as weight 400 but CSS shows 600; non-blocking (animation does not touch button styles)
+- [x] Dimension 5 Spacing: FLAG — pre-existing `margin: 6px 0 0` on `.ventanilla-warning` not a multiple of 4; Phase 6 does not introduce this
+- [x] Dimension 6 Registry Safety: PASS
 
-**Approval:** pending
+**Approval:** approved 2026-07-07
