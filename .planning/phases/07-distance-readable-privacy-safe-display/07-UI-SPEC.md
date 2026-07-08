@@ -56,19 +56,23 @@ Exceptions:
 
 ## Typography
 
-**Target state after Phase 7 (values that change are marked with [CHANGE]):**
+**Target state after Phase 7. Values that change are marked with [CHANGE]. Four sizes declared; two weights declared.**
 
 | Role | Selector | Size | Weight | Line Height | Notes |
 |------|----------|------|--------|-------------|-------|
 | Display | `.ventanilla-ticket` | 48px **[CHANGE from 16px]** | 700 **[CHANGE from 400]** | 1.2 | Primary ticket number — distance-readable at 3m in 5s (D-01) |
-| Label | `.ventanilla-label` | 21px **[CHANGE from 16px]** | 600 (unchanged) | 1.2 | Ventanilla identifier: "Ventanilla N" (D-02) |
-| Queue chip | `.ticket-chip` | 22px **[CHANGE from 16px]** | 400 (unchanged) | 1.5 | Waiting queue numbers: "Turno N" (D-03) |
-| Body | `.queue-strip p`, `.ventanillas-section p`, `.ventanilla-warning`, `.ventanillas-empty` | 16px (unchanged) | 400 (unchanged) | 1.5 | Secondary UI text, warnings, empty states |
-| Section heading | `.queue-strip h2`, `.ventanillas-section h2` | 20px (unchanged) | 600 (unchanged) | 1.2 | Section labels: "Cola", "Ventanillas" |
-| Page title | `.page-title` | 28px (unchanged) | 600 (unchanged) | 1.2 | App title: "Turnero" |
-| Button | `.add-ticket-button`, `.add-window-button`, `.call-next-button` | 16px (unchanged) | 600 (unchanged) | — | Action buttons |
+| Page title | `.page-title` | 28px (no size change) | 700 **[CHANGE from 600]** | 1.2 | App title: "Turnero" — size unmodified by Phase 7; weight normalized to bold tier |
+| Label / Section heading | `.ventanilla-label`, `.queue-strip h2`, `.ventanillas-section h2` | 22px **[CHANGE: label 16px→22px; h2 20px→22px]** | 700 **[CHANGE from 600]** | 1.2 | Ventanilla identifier (D-02, within 20–22px range); section labels "Cola", "Ventanillas" (merged from 20px tier) |
+| Queue chip / Body / Button | `.ticket-chip` | 22px **[CHANGE from 16px]** | 400 (unchanged) | 1.5 | Waiting queue numbers (D-03, within 20–24px range) |
+| Body / Button | `.queue-strip p`, `.ventanillas-section p`, `.ventanilla-warning`, `.ventanillas-empty`, `.add-ticket-button`, `.add-window-button`, `.call-next-button` | 16px (unchanged) | 400 **[CHANGE for buttons: 600→400]** | 1.5 | Secondary UI text, warnings, empty states, action buttons |
 
-**Weight declaration:** Three weights are used in this project — 400 (regular), 600 (semibold), 700 (bold). Weight 700 is reserved exclusively for `.ventanilla-ticket` (the primary display element). No other element uses 700.
+**Declared size scale (4 sizes):** 48px / 28px / 22px / 16px
+
+**Declared weight scale (2 weights):**
+- 400 (regular): queue chips, body text, warnings, empty states, action buttons
+- 700 (bold): `.ventanilla-ticket` (D-01), `.ventanilla-label`, `.page-title`, section headings `h2`
+
+Weight 600 is not used anywhere in this project after Phase 7.
 
 **Why 48px for display at 3m:** At standard 96dpi, 48px = 12.7mm character height. At 3m viewing distance this produces a visual angle above the ~0.2° threshold for comfortable reading of high-contrast text. User confirmed this value (D-01). Use `px` units (not `em` or `rem`) to guarantee fixed sizing regardless of ancestor font-size overrides.
 
@@ -87,7 +91,7 @@ Exceptions:
 | Text primary | `#1f2933` | All ticket numbers, labels, headings, button text |
 | Text muted | `#6b7c93` | Remove button "×" icon only |
 | Destructive | `#c0392b` | Warning messages only: WINDOW-02 removal block, CALL-02 empty-queue message |
-| Accent | `#fbbf24` | Reserved exclusively for the `@keyframes ticket-flash` animation background-color |
+| Accent (10%) | `#fbbf24` | Reserved exclusively for the `@keyframes ticket-flash` animation background-color |
 
 Accent reserved for: the ticket-changed flash animation (`@keyframes ticket-flash`, `.ventanilla-ticket-flash`) — no other element may use `#fbbf24`.
 
@@ -109,6 +113,7 @@ Phase 7 introduces no new copy. All copy is pre-existing. The elements whose vis
 | "Call next" button | `Llamar siguiente` | `.call-next-button` — no change |
 | "Add ticket" button | `Agregar turno` | `.add-ticket-button` — no change |
 | "Add window" button | `Agregar ventanilla` | `.add-window-button` — no change |
+| Remove button (×) | `×` visible; `aria-label="Quitar ventanilla"` | Screen-reader accessible label for the remove button — must be present on the `<button>` element |
 | Removal block warning | `No se puede quitar: tiene un turno activo` | `.ventanilla-warning` — static string |
 | Empty queue warning | `No hay turnos en espera` | `.ventanilla-warning` — static string |
 | No ventanillas state | `Presiona Agregar ventanilla para comenzar` | `.ventanillas-empty` — static string |
@@ -121,16 +126,22 @@ Phase 7 introduces no new copy. All copy is pre-existing. The elements whose vis
 
 ## Component Contract
 
-Phase 7 is CSS-only. No new components are added. The following existing selectors are the targets of the 5 property changes:
+Phase 7 is CSS-only. No new components are added. The following existing selectors are the targets of all property changes:
 
 | Selector | Property | Current Value | Target Value | Decision |
 |----------|----------|---------------|--------------|----------|
 | `.ventanilla-ticket` | `font-size` | 16px | 48px | D-01 |
 | `.ventanilla-ticket` | `font-weight` | 400 | 700 | D-01 |
-| `.ventanilla-label` | `font-size` | 16px | 21px | D-02 (midpoint of 20–22px) |
-| `.ticket-chip` | `font-size` | 16px | 22px | D-03 (midpoint of 20–24px) |
+| `.ventanilla-label` | `font-size` | 16px | 22px | D-02 (within 20–22px range) |
+| `.ventanilla-label` | `font-weight` | 600 | 700 | 2-weight consolidation |
+| `.ticket-chip` | `font-size` | 16px | 22px | D-03 (within 20–24px range) |
 | `.ventanillas-grid` | `grid-template-columns` | `repeat(auto-fit, minmax(200px, 1fr))` | `repeat(auto-fill, minmax(350px, 1fr))` | D-04 |
 | `.ventanilla-card` | `text-align` | (not set) | `center` | D-05 |
+| `.queue-strip h2`, `.ventanillas-section h2` | `font-size` | 20px | 22px | 4-size consolidation — merge into 22px tier |
+| `.queue-strip h2`, `.ventanillas-section h2` | `font-weight` | 600 | 700 | 2-weight consolidation |
+| `.page-title` | `font-weight` | 600 | 700 | 2-weight consolidation |
+| `.add-ticket-button`, `.add-window-button`, `.call-next-button` | `font-weight` | 600 | 400 | 2-weight consolidation — buttons belong in regular tier |
+| Remove `<button>` (×) | `aria-label` attribute | (absent) | `"Quitar ventanilla"` | Accessibility — screen-reader label |
 
 **Why `auto-fill` not `auto-fit`:** With `auto-fill`, empty grid tracks are preserved, preventing a single-ventanilla card from stretching to fill the full row. With `auto-fit`, a single card would expand to 100% width. Either is acceptable per D-04, but `auto-fill` is the safer default.
 
@@ -150,7 +161,7 @@ Phase 7 adds no new interactions. All existing interactions are unchanged:
 |-------------|---------|----------|--------------------------|
 | Add ticket | Click "Agregar turno" | New chip appended to queue list | Chip now 22px instead of 16px |
 | Call next | Click "Llamar siguiente" | Ventanilla ticket updates; flash animation plays; beep sounds | Ticket display now 48px/700; flash area is larger |
-| Remove ventanilla | Click "×" | Removes if no active ticket; shows warning if active | Warning text centered (D-05 centering inherits) |
+| Remove ventanilla | Click "×" (`aria-label="Quitar ventanilla"`) | Removes if no active ticket; shows warning if active | Warning text centered (D-05 centering inherits) |
 | Add ventanilla | Click "Agregar ventanilla" | New card added to grid | Card follows 350px min-width grid constraint |
 
 ---
