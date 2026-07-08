@@ -130,10 +130,19 @@ Plans:
   1. User sees a transition animation on a ventanilla's display the moment its current ticket changes after a successful call
   2. The animation is scoped to the ventanilla that changed, not the whole page
   3. The animation does not interfere with rapid sequential calls (no stuck or overlapping animation states)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 06-01: TBD
+
+**Wave 1**
+- [ ] 06-01-PLAN.md — TDD RED: append FEEDBACK-02 describe block (3 test cases) to App.test.tsx; tests must fail because flash class not yet applied in VentanillaCard
+
+**Wave 2** *(blocked on Wave 1 RED confirmation)*
+- [ ] 06-02-PLAN.md — TDD GREEN: add @keyframes ticket-flash + .ventanilla-ticket-flash to index.css; add key prop + conditional flash className to VentanillaCard <p> in App.tsx; visual checkpoint
+
+**Cross-cutting constraints:**
+- key prop fallback must be the string 'empty' (not null/undefined) — React silently falls back to index reconciliation on null/undefined keys
+- flash class applied only when currentTicket !== null — per D-07; no animation on null transition or page load
 
 ### Phase 7: Distance-Readable & Privacy-Safe Display
 **Goal**: The shared display is usable as an actual waiting-room screen — ticket numbers are legible from across a room, and the screen never exposes patient-identifying information by design
@@ -176,6 +185,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 3. Configurable Ventanillas | 2/2 | Complete   | 2026-07-07 |
 | 4. Call Next (Atomic Dequeue) | 2/2 | Complete    | 2026-07-07 |
 | 5. Call Sound Feedback | 2/2 | Complete   | 2026-07-08 |
-| 6. Call Transition Animation | 0/TBD | Not started | - |
+| 6. Call Transition Animation | 0/2 | Not started | - |
 | 7. Distance-Readable & Privacy-Safe Display | 0/TBD | Not started | - |
 | 8. Persistence Across Reloads | 0/TBD | Not started | - |
