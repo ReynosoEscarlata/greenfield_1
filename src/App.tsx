@@ -1,20 +1,22 @@
 import { useState, useReducer, useEffect } from 'react'
 import { queueReducer, initialState } from './turnero'
 import type { Ventanilla } from './turnero'
+import { useBeep } from './useBeep'
 
 export function VentanillaCard({
   ventanilla,
   onRemove,
   onCallNext,
-  isQueueEmpty,
+  queueLength,
 }: Readonly<{
   ventanilla: Ventanilla
   onRemove: (id: number) => void
   onCallNext: (id: number) => void
-  isQueueEmpty: boolean
+  queueLength: number
 }>) {
   const [showWarning, setShowWarning] = useState(false)
   const [showEmptyWarning, setShowEmptyWarning] = useState(false)
+  const { play: playBeep } = useBeep()
 
   // WR-01 fix: reset removal warning when currentTicket is cleared externally
   useEffect(() => {
@@ -40,10 +42,11 @@ export function VentanillaCard({
   }
 
   function handleCallNext() {
-    if (isQueueEmpty) {
+    if (queueLength === 0) {
       setShowEmptyWarning(true)
       return
     }
+    playBeep()
     onCallNext(ventanilla.id)
   }
 
@@ -126,7 +129,7 @@ function App() {
                 ventanilla={v}
                 onRemove={(id) => dispatch({ type: 'REMOVE_WINDOW', id })}
                 onCallNext={(id) => dispatch({ type: 'CALL_NEXT', windowId: id })}
-                isQueueEmpty={state.queue.length === 0}
+                queueLength={state.queue.length}
               />
             ))
           )}
