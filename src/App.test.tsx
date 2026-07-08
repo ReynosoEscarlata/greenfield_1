@@ -152,3 +152,51 @@ describe('FEEDBACK-01: Beep on successful call', () => {
     expect(mockPlay).not.toHaveBeenCalled()
   })
 })
+
+describe('FEEDBACK-02: Flash class on ticket change', () => {
+  it('applies ventanilla-ticket-flash class when currentTicket is non-null', () => {
+    render(
+      <VentanillaCard
+        ventanilla={{ id: 1, number: 1, currentTicket: { id: 5, number: 5 } }}
+        onRemove={() => {}}
+        onCallNext={() => {}}
+        queueLength={0}
+      />
+    )
+    expect(screen.getByText('Turno 5')).toHaveClass('ventanilla-ticket-flash')
+  })
+
+  it('does not apply ventanilla-ticket-flash class when currentTicket is null', () => {
+    render(
+      <VentanillaCard
+        ventanilla={{ id: 1, number: 1, currentTicket: null }}
+        onRemove={() => {}}
+        onCallNext={() => {}}
+        queueLength={0}
+      />
+    )
+    expect(screen.getByText('sin turno')).not.toHaveClass('ventanilla-ticket-flash')
+  })
+
+  it('applies flash class on the new element after rapid ticket change (D-05)', () => {
+    const { rerender } = render(
+      <VentanillaCard
+        ventanilla={{ id: 1, number: 1, currentTicket: { id: 10, number: 10 } }}
+        onRemove={() => {}}
+        onCallNext={() => {}}
+        queueLength={0}
+      />
+    )
+    expect(screen.getByText('Turno 10')).toHaveClass('ventanilla-ticket-flash')
+
+    rerender(
+      <VentanillaCard
+        ventanilla={{ id: 1, number: 1, currentTicket: { id: 11, number: 11 } }}
+        onRemove={() => {}}
+        onCallNext={() => {}}
+        queueLength={0}
+      />
+    )
+    expect(screen.getByText('Turno 11')).toHaveClass('ventanilla-ticket-flash')
+  })
+})
