@@ -121,6 +121,20 @@ body {
   margin: 0;
 }
 
+@keyframes ticket-flash {
+  from {
+    background-color: #fbbf24;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+.ventanilla-ticket-flash {
+  animation: ticket-flash 600ms ease-out forwards;
+  border-radius: 4px;
+}
+
 .ventanilla-remove {
   position: absolute;
   top: 8px;

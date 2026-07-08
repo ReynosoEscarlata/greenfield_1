@@ -61,7 +61,14 @@ export function VentanillaCard({
         ×
       </button>
       <h3 className="ventanilla-label">Ventanilla {ventanilla.number}</h3>
-      <p className="ventanilla-ticket">
+      <p
+        key={ventanilla.currentTicket?.id ?? 'empty'}
+        className={
+          ventanilla.currentTicket !== null
+            ? 'ventanilla-ticket ventanilla-ticket-flash'
+            : 'ventanilla-ticket'
+        }
+      >
         {ventanilla.currentTicket === null
           ? 'sin turno'
           : `Turno ${ventanilla.currentTicket.number}`}
