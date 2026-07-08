@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Configurable Ventanillas** - User can add/remove windows and see each window's current-ticket state, including the empty state (completed 2026-07-07)
 - [x] **Phase 4: Call Next (Atomic Dequeue)** - User can press "Llamar siguiente" on any window to atomically pull the next ticket from the shared queue, including the empty-queue case (completed 2026-07-07)
 - [x] **Phase 5: Call Sound Feedback** - User hears a beep synchronously when a call action takes a ticket (completed 2026-07-08)
-- [ ] **Phase 6: Call Transition Animation** - User sees a visual transition animation when a window's current ticket changes
+- [x] **Phase 6: Call Transition Animation** - User sees a visual transition animation when a window's current ticket changes (completed 2026-07-08)
 - [ ] **Phase 7: Distance-Readable & Privacy-Safe Display** - User can read ticket numbers from across a room, and the screen never reveals patient-identifying data
 - [ ] **Phase 8: Persistence Across Reloads** - User's queue and window state survive a page reload, with defensive recovery from corrupted/missing data
 
@@ -138,7 +138,7 @@ Plans:
 - [x] 06-01-PLAN.md — TDD RED: append FEEDBACK-02 describe block (3 test cases) to App.test.tsx; tests must fail because flash class not yet applied in VentanillaCard
 
 **Wave 2** *(blocked on Wave 1 RED confirmation)*
-- [ ] 06-02-PLAN.md — TDD GREEN: add @keyframes ticket-flash + .ventanilla-ticket-flash to index.css; add key prop + conditional flash className to VentanillaCard <p> in App.tsx; visual checkpoint
+- [x] 06-02-PLAN.md — TDD GREEN: add @keyframes ticket-flash + .ventanilla-ticket-flash to index.css; add key prop + conditional flash className to VentanillaCard <p> in App.tsx; visual checkpoint
 
 **Cross-cutting constraints:**
 - key prop fallback must be the string 'empty' (not null/undefined) — React silently falls back to index reconciliation on null/undefined keys
@@ -185,6 +185,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 3. Configurable Ventanillas | 2/2 | Complete   | 2026-07-07 |
 | 4. Call Next (Atomic Dequeue) | 2/2 | Complete    | 2026-07-07 |
 | 5. Call Sound Feedback | 2/2 | Complete   | 2026-07-08 |
-| 6. Call Transition Animation | 1/2 | In Progress|  |
+| 6. Call Transition Animation | 2/2 | Complete   | 2026-07-08 |
 | 7. Distance-Readable & Privacy-Safe Display | 0/TBD | Not started | - |
 | 8. Persistence Across Reloads | 0/TBD | Not started | - |
