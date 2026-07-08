@@ -434,12 +434,13 @@ describe('FEEDBACK-02: Flash class on ticket change', () => {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **D-06 after Phase 8 — how to suppress flash on hydration?**
    - What we know: Phase 6 code applies flash class whenever `currentTicket !== null`, including first mount.
    - What's unclear: Phase 8 will persist state to localStorage. On reload, ventanillas will have non-null `currentTicket` → flash fires on hydration (D-06 violation).
    - Recommendation: Leave for Phase 8. The ROADMAP Phase 8 success criteria #3 explicitly covers this. Options: (a) `isHydrating` flag cleared after first render, (b) only apply flash class inside event handler via a ref-tracked "justCalled" flag, (c) separate `shouldAnimate` prop set by parent on actual CALL_NEXT dispatch. Research this in Phase 8.
+   - **RESOLVED: Deferred to Phase 8. ROADMAP Phase 8 success criteria item 3 covers hydration suppression. No action required in Phase 6.**
 
 ---
 
