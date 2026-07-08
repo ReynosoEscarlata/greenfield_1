@@ -23,7 +23,7 @@
 
 ### Feedback (FEEDBACK)
 
-- [ ] **FEEDBACK-01**: Al llamar un turno se reproduce un sonido/beep, disparado de forma síncrona dentro del click (no en recarga de página ni por efectos posteriores)
+- [x] **FEEDBACK-01**: Al llamar un turno se reproduce un sonido/beep, disparado de forma síncrona dentro del click (no en recarga de página ni por efectos posteriores)
 - [ ] **FEEDBACK-02**: Al cambiar el turno actual de una ventanilla se muestra una animación de transición visual
 
 ### Diseño (DISPLAY)
@@ -77,7 +77,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | WINDOW-03 | Phase 3 | Complete |
 | CALL-01 | Phase 4 | Complete |
 | CALL-02 | Phase 4 | Complete |
-| FEEDBACK-01 | Phase 5 | Pending |
+| FEEDBACK-01 | Phase 5 | Complete |
 | FEEDBACK-02 | Phase 6 | Pending |
 | DISPLAY-01 | Phase 7 | Pending |
 | PERSIST-01 | Phase 8 | Pending |

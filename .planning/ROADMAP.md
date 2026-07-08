@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Add Ticket & View Queue** - User can add tickets and see them appear in the ordered waiting queue end-to-end (completed 2026-07-07)
 - [x] **Phase 3: Configurable Ventanillas** - User can add/remove windows and see each window's current-ticket state, including the empty state (completed 2026-07-07)
 - [x] **Phase 4: Call Next (Atomic Dequeue)** - User can press "Llamar siguiente" on any window to atomically pull the next ticket from the shared queue, including the empty-queue case (completed 2026-07-07)
-- [ ] **Phase 5: Call Sound Feedback** - User hears a beep synchronously when a call action takes a ticket
+- [x] **Phase 5: Call Sound Feedback** - User hears a beep synchronously when a call action takes a ticket (completed 2026-07-08)
 - [ ] **Phase 6: Call Transition Animation** - User sees a visual transition animation when a window's current ticket changes
 - [ ] **Phase 7: Distance-Readable & Privacy-Safe Display** - User can read ticket numbers from across a room, and the screen never reveals patient-identifying data
 - [ ] **Phase 8: Persistence Across Reloads** - User's queue and window state survive a page reload, with defensive recovery from corrupted/missing data
@@ -115,7 +115,7 @@ Plans:
 - [x] 05-01-PLAN.md — TDD RED: create useBeep stub, extend setupTests.ts with AudioContext mock, update App.test.tsx (vi.mock + 7 isQueueEmpty→queueLength prop renames + FEEDBACK-01 describe block)
 
 **Wave 2** *(blocked on Wave 1 completion)*
-- [ ] 05-02-PLAN.md — TDD GREEN: implement useBeep.ts (lazy singleton AudioContext, 880 Hz/200ms beep with decay envelope), update App.tsx (import useBeep, rename prop isQueueEmpty→queueLength, add playBeep() in handleCallNext, update JSX prop pass-through)
+- [x] 05-02-PLAN.md — TDD GREEN: implement useBeep.ts (lazy singleton AudioContext, 880 Hz/200ms beep with decay envelope), update App.tsx (import useBeep, rename prop isQueueEmpty→queueLength, add playBeep() in handleCallNext, update JSX prop pass-through)
 
 **Cross-cutting constraints:**
 - playBeep() must be called BEFORE onCallNext() in handleCallNext — guarantees synchrony inside the user gesture (browser autoplay policy)
@@ -175,7 +175,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 2. Add Ticket & View Queue | 1/1 | Complete   | 2026-07-07 |
 | 3. Configurable Ventanillas | 2/2 | Complete   | 2026-07-07 |
 | 4. Call Next (Atomic Dequeue) | 2/2 | Complete    | 2026-07-07 |
-| 5. Call Sound Feedback | 0/2 | Planned     | - |
+| 5. Call Sound Feedback | 2/2 | Complete   | 2026-07-08 |
 | 6. Call Transition Animation | 0/TBD | Not started | - |
 | 7. Distance-Readable & Privacy-Safe Display | 0/TBD | Not started | - |
 | 8. Persistence Across Reloads | 0/TBD | Not started | - |
