@@ -153,10 +153,16 @@ Plans:
   1. A person standing roughly 3 meters from the screen can read the current ticket number for any ventanilla within 5 seconds
   2. Ticket numbers and queue entries use high-contrast, large typography distinct from the rest of the UI
   3. No name, identifier, or other patient-identifying data is rendered anywhere on the screen — only ticket numbers
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 07-01: TBD
+
+**Wave 1**
+- [ ] 07-01-PLAN.md — Apply CSS typography scaling (48px ticket numbers, 22px chips/labels), grid constraint (max 3 cards/row), centering, 2-weight consolidation, and PRIVACY-01 automated tests
+
+**Wave 2** *(blocked on Wave 1 completion)*
+- [ ] 07-02-PLAN.md — Visual checkpoint: confirm distance readability at 3m, grid wrapping, flash proportionality
+
 **UI hint**: yes
 
 ### Phase 8: Persistence Across Reloads
