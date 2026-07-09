@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Phase 7 context gathered
+stopped_at: Phase 7 UI-SPEC approved
 last_updated: "2026-07-08T23:27:47.069Z"
 last_activity: 2026-07-08
 progress:
@@ -97,4 +97,4 @@ Items acknowledged and carried forward from previous milestone close:
 
 Last session: 2026-07-08T23:27:47.043Z
 Stopped at: Phase 7 context gathered
-Resume file: .planning/phases/07-distance-readable-privacy-safe-display/07-CONTEXT.md
+Resume file: .planning/phases/07-distance-readable-privacy-safe-display/07-UI-SPEC.md
