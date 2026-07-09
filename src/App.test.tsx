@@ -200,3 +200,31 @@ describe('FEEDBACK-02: Flash class on ticket change', () => {
     expect(screen.getByText('Turno 11')).toHaveClass('ventanilla-ticket-flash')
   })
 })
+
+describe('PRIVACY-01: No patient-identifying data rendered', () => {
+  it('renders only ticket number text when current ticket is active', () => {
+    render(
+      <VentanillaCard
+        ventanilla={{ id: 1, number: 1, currentTicket: { id: 42, number: 42 } }}
+        onRemove={() => {}}
+        onCallNext={() => {}}
+        queueLength={0}
+      />
+    )
+    expect(screen.getByText('Turno 42')).toBeInTheDocument()
+    expect(screen.queryByTestId('patient-name')).not.toBeInTheDocument()
+  })
+
+  it('renders only "sin turno" text when no ticket is active', () => {
+    render(
+      <VentanillaCard
+        ventanilla={{ id: 1, number: 1, currentTicket: null }}
+        onRemove={() => {}}
+        onCallNext={() => {}}
+        queueLength={0}
+      />
+    )
+    expect(screen.getByText('sin turno')).toBeInTheDocument()
+    expect(screen.queryByTestId('patient-name')).not.toBeInTheDocument()
+  })
+})
