@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 7 planned — 2 plans ready
-last_updated: "2026-07-08T00:00:00.000Z"
+status: executing
+stopped_at: Completed 07-01-PLAN.md
+last_updated: "2026-07-08T18:51:30Z"
 last_activity: 2026-07-08
 progress:
   total_phases: 8
   completed_phases: 6
-  total_plans: 10
-  completed_plans: 10
-  percent: 75
+  total_plans: 12
+  completed_plans: 12
+  percent: 79
 ---
 
 # Project State
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-06-21)
 ## Current Position
 
 Phase: 7
-Plan: 2 plans created (07-01, 07-02)
-Status: Ready to execute
+Plan: 07-01 completed, 07-02 pending (visual checkpoint)
+Status: Plan 07-01 executed
 Last activity: 2026-07-08
 
 Progress: [██████████] 100%
@@ -76,6 +76,9 @@ Recent decisions affecting current work:
 - [Phase 5 P01]: All 7 isQueueEmpty prop refs replaced in tests before component update — RED = prop-type mismatch + missing hook call
 - [Phase 5 P02]: playBeep() called before onCallNext() in handleCallNext to stay inside synchronous user-gesture context (D-06)
 - [Phase 5 P02]: exponentialRampToValueAtTime target is 0.001 not 0 — Web Audio exponential ramp undefined at zero (RESEARCH Pitfall 3)
+- [Phase 7 P01]: font-weight: 600 eliminated entirely — 2-weight consolidation (400 regular, 700 bold only)
+- [Phase 7 P01]: auto-fill (not auto-fit) for ventanillas-grid — prevents single card from stretching full width
+- [Phase 7 P01]: PRIVACY-01 satisfied by design — Ticket{id,number} has no name field; tests serve as regression guards
 
 ### Pending Todos
 
@@ -95,6 +98,6 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-07-08T23:27:47.043Z
-Stopped at: Phase 7 context gathered
-Resume file: .planning/phases/07-distance-readable-privacy-safe-display/07-UI-SPEC.md
+Last session: 2026-07-08T18:51:30Z
+Stopped at: Completed 07-01-PLAN.md
+Resume file: .planning/phases/07-distance-readable-privacy-safe-display/07-02-PLAN.md

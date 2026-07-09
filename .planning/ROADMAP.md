@@ -158,7 +158,7 @@ Plans:
 Plans:
 
 **Wave 1**
-- [ ] 07-01-PLAN.md — Apply CSS typography scaling (48px ticket numbers, 22px chips/labels), grid constraint (max 3 cards/row), centering, 2-weight consolidation, and PRIVACY-01 automated tests
+- [x] 07-01-PLAN.md — Apply CSS typography scaling (48px ticket numbers, 22px chips/labels), grid constraint (max 3 cards/row), centering, 2-weight consolidation, and PRIVACY-01 automated tests (completed 2026-07-08)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 - [ ] 07-02-PLAN.md — Visual checkpoint: confirm distance readability at 3m, grid wrapping, flash proportionality
@@ -192,5 +192,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 4. Call Next (Atomic Dequeue) | 2/2 | Complete    | 2026-07-07 |
 | 5. Call Sound Feedback | 2/2 | Complete   | 2026-07-08 |
 | 6. Call Transition Animation | 2/2 | Complete   | 2026-07-08 |
-| 7. Distance-Readable & Privacy-Safe Display | 0/TBD | Not started | - |
+| 7. Distance-Readable & Privacy-Safe Display | 1/2 | In progress | - |
 | 8. Persistence Across Reloads | 0/TBD | Not started | - |

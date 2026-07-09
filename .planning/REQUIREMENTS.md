@@ -24,11 +24,11 @@
 ### Feedback (FEEDBACK)
 
 - [x] **FEEDBACK-01**: Al llamar un turno se reproduce un sonido/beep, disparado de forma síncrona dentro del click (no en recarga de página ni por efectos posteriores)
-- [ ] **FEEDBACK-02**: Al cambiar el turno actual de una ventanilla se muestra una animación de transición visual
+- [x] **FEEDBACK-02**: Al cambiar el turno actual de una ventanilla se muestra una animación de transición visual
 
 ### Diseño (DISPLAY)
 
-- [ ] **DISPLAY-01**: Los números de turno se muestran en tamaño grande y alto contraste, legibles a distancia (criterio: legible en 5 segundos desde 3 metros), acorde a una pantalla de sala de espera
+- [x] **DISPLAY-01**: Los números de turno se muestran en tamaño grande y alto contraste, legibles a distancia (criterio: legible en 5 segundos desde 3 metros), acorde a una pantalla de sala de espera
 
 ### Persistencia (PERSIST)
 
@@ -36,7 +36,7 @@
 
 ### Privacidad (PRIVACY)
 
-- [ ] **PRIVACY-01**: La pantalla pública solo muestra números de turno, nunca nombres ni datos identificatorios de pacientes
+- [x] **PRIVACY-01**: La pantalla pública solo muestra números de turno, nunca nombres ni datos identificatorios de pacientes
 
 ## v2 Requirements
 
@@ -78,10 +78,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CALL-01 | Phase 4 | Complete |
 | CALL-02 | Phase 4 | Complete |
 | FEEDBACK-01 | Phase 5 | Complete |
-| FEEDBACK-02 | Phase 6 | Pending |
-| DISPLAY-01 | Phase 7 | Pending |
+| FEEDBACK-02 | Phase 6 | Complete |
+| DISPLAY-01 | Phase 7 | Complete |
 | PERSIST-01 | Phase 8 | Pending |
-| PRIVACY-01 | Phase 7 | Pending |
+| PRIVACY-01 | Phase 7 | Complete |
 
 **Coverage:**
 - v1 requirements: 12 total
