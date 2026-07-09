@@ -1,10 +1,11 @@
 ---
 phase: 7
 slug: distance-readable-privacy-safe-display
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: 2026-07-08
+reviewed_at: 2026-07-08T00:00:00Z
 ---
 
 # Phase 7 — UI Design Contract
