@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 8 planned — ready to execute
+status: complete
+stopped_at: Phase 8 complete — all 8 phases done, PERSIST-01 delivered
 last_updated: "2026-07-09T00:00:00Z"
 last_activity: 2026-07-09
 progress:
   total_phases: 8
-  completed_phases: 7
+  completed_phases: 8
   total_plans: 16
-  completed_plans: 14
-  percent: 87
+  completed_plans: 16
+  percent: 100
 ---
 
 # Project State
@@ -21,7 +21,7 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-21)
 
 **Core value:** Que cualquier ventanilla pueda llamar al siguiente turno de la cola compartida y la pantalla refleje correctamente, en todo momento, cuál es el turno actual de cada ventanilla y cuáles son los próximos en espera.
-**Current focus:** Phase 8 — Persistence Across Reloads
+**Current focus:** Milestone v1.0 complete — all 8 phases delivered
 
 ## Current Position
 

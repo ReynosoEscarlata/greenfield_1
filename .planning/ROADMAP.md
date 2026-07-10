@@ -179,10 +179,10 @@ Plans:
 Plans:
 
 **Wave 1**
-- [ ] 08-01-PLAN.md — TDD RED: add PERSIST-01 describe block (5 test cases) to App.test.tsx; import App default export and QueueState type
+- [x] 08-01-PLAN.md — TDD RED: add PERSIST-01 describe block (5 test cases) to App.test.tsx; import App default export and QueueState type (completed 2026-07-09)
 
 **Wave 2** *(blocked on Wave 1 RED confirmation)*
-- [ ] 08-02-PLAN.md — TDD GREEN: add loadFromStorage() + lazy useReducer initializer + useEffect([state]) save to App.tsx; all 33 tests pass
+- [x] 08-02-PLAN.md — TDD GREEN: add loadFromStorage() + lazy useReducer initializer + useEffect([state]) save to App.tsx; all 33 tests pass (completed 2026-07-09)
 
 **Cross-cutting constraints:**
 - loadFromStorage() must use `?? ''` not `?? 'null'` — `JSON.parse('null')` returns null without throwing (Pitfall 4)
@@ -202,5 +202,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 4. Call Next (Atomic Dequeue) | 2/2 | Complete    | 2026-07-07 |
 | 5. Call Sound Feedback | 2/2 | Complete   | 2026-07-08 |
 | 6. Call Transition Animation | 2/2 | Complete   | 2026-07-08 |
-| 7. Distance-Readable & Privacy-Safe Display | 1/2 | In progress | - |
-| 8. Persistence Across Reloads | 0/2 | Planned | - |
+| 7. Distance-Readable & Privacy-Safe Display | 2/2 | Complete | 2026-07-08 |
+| 8. Persistence Across Reloads | 2/2 | Complete | 2026-07-09 |

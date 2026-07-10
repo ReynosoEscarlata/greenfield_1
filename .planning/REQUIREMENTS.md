@@ -32,7 +32,7 @@
 
 ### Persistencia (PERSIST)
 
-- [ ] **PERSIST-01**: El estado de la cola y de las ventanillas persiste en localStorage y se recupera correctamente al recargar la página (con manejo defensivo de datos corruptos o ausentes)
+- [x] **PERSIST-01**: El estado de la cola y de las ventanillas persiste en localStorage y se recupera correctamente al recargar la página (con manejo defensivo de datos corruptos o ausentes)
 
 ### Privacidad (PRIVACY)
 
@@ -80,7 +80,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FEEDBACK-01 | Phase 5 | Complete |
 | FEEDBACK-02 | Phase 6 | Complete |
 | DISPLAY-01 | Phase 7 | Complete |
-| PERSIST-01 | Phase 8 | Pending |
+| PERSIST-01 | Phase 8 | Complete |
 | PRIVACY-01 | Phase 7 | Complete |
 
 **Coverage:**
