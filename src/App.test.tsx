@@ -6,6 +6,8 @@ vi.mock('./useBeep', () => ({
 
 import { render, screen, fireEvent, act } from '@testing-library/react'
 import { VentanillaCard } from './App'
+import App from './App'
+import type { QueueState } from './turnero'
 
 describe('WINDOW-03: Per-window current ticket display', () => {
   it('renders "sin turno" when currentTicket is null', () => {
@@ -226,5 +228,62 @@ describe('PRIVACY-01: No patient-identifying data rendered', () => {
     )
     expect(screen.getByText('sin turno')).toBeInTheDocument()
     expect(screen.queryByTestId('patient-name')).not.toBeInTheDocument()
+  })
+})
+
+describe('PERSIST-01: Persistence across reloads', () => {
+  beforeEach(() => {
+    localStorage.clear()
+    mockPlay.mockClear()
+  })
+
+  it('SC-1: renders persisted queue and ventanilla state after reload', () => {
+    const persisted: QueueState = {
+      queue: [{ id: 2, number: 2 }, { id: 3, number: 3 }],
+      nextNumber: 4,
+      ventanillas: [{ id: 1, number: 1, currentTicket: { id: 1, number: 1 } }],
+      nextWindowNumber: 2,
+    }
+    localStorage.setItem('turnero-v1', JSON.stringify(persisted))
+    render(<App />)
+    expect(screen.getByText('Turno 2')).toBeInTheDocument()
+    expect(screen.getByText('Turno 3')).toBeInTheDocument()
+    expect(screen.getByText('Turno 1')).toBeInTheDocument()
+    expect(screen.getByText('Ventanilla 1')).toBeInTheDocument()
+  })
+
+  it('SC-2a: falls back to empty state when localStorage key is absent', () => {
+    render(<App />)
+    expect(screen.getByText('Próximos turnos aparecerán aquí')).toBeInTheDocument()
+    expect(screen.queryByText(/^Turno \d/)).not.toBeInTheDocument()
+  })
+
+  it('SC-2b: falls back to empty state on corrupted localStorage data', () => {
+    localStorage.setItem('turnero-v1', 'not-valid-json{{{')
+    render(<App />)
+    expect(screen.getByText('Próximos turnos aparecerán aquí')).toBeInTheDocument()
+  })
+
+  it('SC-3: does not call playBeep on initial render with persisted non-null ticket', () => {
+    const persisted: QueueState = {
+      queue: [],
+      nextNumber: 2,
+      ventanillas: [{ id: 1, number: 1, currentTicket: { id: 1, number: 1 } }],
+      nextWindowNumber: 2,
+    }
+    localStorage.setItem('turnero-v1', JSON.stringify(persisted))
+    render(<App />)
+    expect(mockPlay).not.toHaveBeenCalled()
+  })
+
+  it('saves updated state to localStorage after dispatch', () => {
+    render(<App />)
+    act(() => {
+      fireEvent.click(screen.getByRole('button', { name: /agregar turno/i }))
+    })
+    const saved = JSON.parse(localStorage.getItem('turnero-v1') ?? 'null') as QueueState | null
+    expect(saved).not.toBeNull()
+    expect(saved!.queue).toHaveLength(1)
+    expect(saved!.nextNumber).toBe(2)
   })
 })
