@@ -12,17 +12,15 @@ Que cualquier ventanilla pueda llamar al siguiente turno de la cola compartida y
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] Usuario puede agregar un nuevo turno a la cola con un botón "Agregar turno" (numeración automática incremental) — Validated in Phase 2: Add Ticket / View Queue
+- [x] Usuario puede ver la cola de turnos en espera (los próximos, en orden) — Validated in Phase 2: Add Ticket / View Queue
+- [x] Usuario puede configurar dinámicamente la cantidad de ventanillas (agregar/quitar ventanillas) — Validated in Phase 3: Configurable Ventanillas
+- [x] Cada ventanilla muestra su turno actual (o "sin turno" si nunca llamó ninguno) — Validated in Phase 3: Configurable Ventanillas
+- [x] Usuario puede presionar "Llamar siguiente" en una ventanilla para tomar el próximo turno de la cola compartida — Validated in Phase 4: Call Next (Atomic Dequeue)
 
 ### Active
-
-- [ ] Usuario puede agregar un nuevo turno a la cola con un botón "Agregar turno" (numeración automática incremental)
-- [ ] Usuario puede ver la cola de turnos en espera (los próximos, en orden)
-- [ ] Usuario puede configurar dinámicamente la cantidad de ventanillas (agregar/quitar ventanillas)
-- [ ] Cada ventanilla muestra su turno actual (o "sin turno" si nunca llamó ninguno)
-- [ ] Usuario puede presionar "Llamar siguiente" en una ventanilla para tomar el próximo turno de la cola compartida
-- [ ] Al llamar un turno se reproduce un sonido/beep
-- [ ] Al cambiar el turno actual de una ventanilla se muestra una pequeña animación de transición
+- [x] Al llamar un turno se reproduce un sonido/beep — Validated in Phase 5: Call Sound
+- [x] Al cambiar el turno actual de una ventanilla se muestra una pequeña animación de transición — Validated in Phase 6: Call Transition Animation
 - [ ] El estado de la cola y las ventanillas persiste en el navegador (localStorage) entre recargas de página
 
 ### Out of Scope
@@ -73,4 +71,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-21 after initialization*
+*Last updated: 2026-07-08 after Phase 6: Call Transition Animation — amber ticket-flash animation delivered, 26/26 tests GREEN*

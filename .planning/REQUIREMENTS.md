@@ -7,36 +7,36 @@
 
 ### Cola (QUEUE)
 
-- [ ] **QUEUE-01**: Usuario puede agregar un nuevo turno a la cola con un botón "Agregar turno" (numeración automática incremental, basada en un contador independiente, no en la longitud de la cola)
-- [ ] **QUEUE-02**: Usuario puede ver la lista ordenada de turnos en espera (los próximos a ser llamados)
+- [x] **QUEUE-01**: Usuario puede agregar un nuevo turno a la cola con un botón "Agregar turno" (numeración automática incremental, basada en un contador independiente, no en la longitud de la cola)
+- [x] **QUEUE-02**: Usuario puede ver la lista ordenada de turnos en espera (los próximos a ser llamados)
 
 ### Ventanillas (WINDOW)
 
-- [ ] **WINDOW-01**: Usuario puede configurar dinámicamente la cantidad de ventanillas (agregar nuevas ventanillas)
-- [ ] **WINDOW-02**: Usuario puede quitar una ventanilla, salvo que tenga un turno actual activo mostrado (la app debe bloquear/avisar en ese caso)
-- [ ] **WINDOW-03**: Cada ventanilla muestra su turno actual, o un estado vacío ("sin turno") si nunca llamó ninguno
+- [x] **WINDOW-01**: Usuario puede configurar dinámicamente la cantidad de ventanillas (agregar nuevas ventanillas)
+- [x] **WINDOW-02**: Usuario puede quitar una ventanilla, salvo que tenga un turno actual activo mostrado (la app debe bloquear/avisar en ese caso)
+- [x] **WINDOW-03**: Cada ventanilla muestra su turno actual, o un estado vacío ("sin turno") si nunca llamó ninguno
 
 ### Llamado (CALL)
 
-- [ ] **CALL-01**: Usuario puede presionar "Llamar siguiente" en una ventanilla para tomar de forma atómica el próximo turno de la cola compartida (sin posibilidad de que dos ventanillas tomen el mismo turno en clics simultáneos)
-- [ ] **CALL-02**: Si la cola está vacía al presionar "Llamar siguiente", se muestra un mensaje indicando que no hay turnos en espera (el botón permanece habilitado)
+- [x] **CALL-01**: Usuario puede presionar "Llamar siguiente" en una ventanilla para tomar de forma atómica el próximo turno de la cola compartida (sin posibilidad de que dos ventanillas tomen el mismo turno en clics simultáneos)
+- [x] **CALL-02**: Si la cola está vacía al presionar "Llamar siguiente", se muestra un mensaje indicando que no hay turnos en espera (el botón permanece habilitado)
 
 ### Feedback (FEEDBACK)
 
-- [ ] **FEEDBACK-01**: Al llamar un turno se reproduce un sonido/beep, disparado de forma síncrona dentro del click (no en recarga de página ni por efectos posteriores)
-- [ ] **FEEDBACK-02**: Al cambiar el turno actual de una ventanilla se muestra una animación de transición visual
+- [x] **FEEDBACK-01**: Al llamar un turno se reproduce un sonido/beep, disparado de forma síncrona dentro del click (no en recarga de página ni por efectos posteriores)
+- [x] **FEEDBACK-02**: Al cambiar el turno actual de una ventanilla se muestra una animación de transición visual
 
 ### Diseño (DISPLAY)
 
-- [ ] **DISPLAY-01**: Los números de turno se muestran en tamaño grande y alto contraste, legibles a distancia (criterio: legible en 5 segundos desde 3 metros), acorde a una pantalla de sala de espera
+- [x] **DISPLAY-01**: Los números de turno se muestran en tamaño grande y alto contraste, legibles a distancia (criterio: legible en 5 segundos desde 3 metros), acorde a una pantalla de sala de espera
 
 ### Persistencia (PERSIST)
 
-- [ ] **PERSIST-01**: El estado de la cola y de las ventanillas persiste en localStorage y se recupera correctamente al recargar la página (con manejo defensivo de datos corruptos o ausentes)
+- [x] **PERSIST-01**: El estado de la cola y de las ventanillas persiste en localStorage y se recupera correctamente al recargar la página (con manejo defensivo de datos corruptos o ausentes)
 
 ### Privacidad (PRIVACY)
 
-- [ ] **PRIVACY-01**: La pantalla pública solo muestra números de turno, nunca nombres ni datos identificatorios de pacientes
+- [x] **PRIVACY-01**: La pantalla pública solo muestra números de turno, nunca nombres ni datos identificatorios de pacientes
 
 ## v2 Requirements
 
@@ -70,18 +70,18 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| QUEUE-01 | Phase 2 | Pending |
-| QUEUE-02 | Phase 2 | Pending |
-| WINDOW-01 | Phase 3 | Pending |
-| WINDOW-02 | Phase 3 | Pending |
-| WINDOW-03 | Phase 3 | Pending |
-| CALL-01 | Phase 4 | Pending |
-| CALL-02 | Phase 4 | Pending |
-| FEEDBACK-01 | Phase 5 | Pending |
-| FEEDBACK-02 | Phase 6 | Pending |
-| DISPLAY-01 | Phase 7 | Pending |
-| PERSIST-01 | Phase 8 | Pending |
-| PRIVACY-01 | Phase 7 | Pending |
+| QUEUE-01 | Phase 2 | Complete |
+| QUEUE-02 | Phase 2 | Complete |
+| WINDOW-01 | Phase 3 | Complete |
+| WINDOW-02 | Phase 3 | Complete |
+| WINDOW-03 | Phase 3 | Complete |
+| CALL-01 | Phase 4 | Complete |
+| CALL-02 | Phase 4 | Complete |
+| FEEDBACK-01 | Phase 5 | Complete |
+| FEEDBACK-02 | Phase 6 | Complete |
+| DISPLAY-01 | Phase 7 | Complete |
+| PERSIST-01 | Phase 8 | Complete |
+| PRIVACY-01 | Phase 7 | Complete |
 
 **Coverage:**
 - v1 requirements: 12 total
