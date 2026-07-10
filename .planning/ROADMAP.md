@@ -20,6 +20,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 6: Call Transition Animation** - User sees a visual transition animation when a window's current ticket changes (completed 2026-07-08)
 - [ ] **Phase 7: Distance-Readable & Privacy-Safe Display** - User can read ticket numbers from across a room, and the screen never reveals patient-identifying data
 - [ ] **Phase 8: Persistence Across Reloads** - User's queue and window state survive a page reload, with defensive recovery from corrupted/missing data
+- [ ] **Phase 9: Rediseño UX/UI con estilo Material Design y Flat Design** - App looks like Material Design 3 with Tailwind CSS v4: sticky Top App Bar, MD3 color tokens, tonal/filled/outlined buttons, and updated flash animation color
 
 ## Phase Details
 
@@ -189,10 +190,38 @@ Plans:
 - useReducer third arg must be the function reference `loadFromStorage` not the call `loadFromStorage()` — eager evaluation reads localStorage on every render (Pitfall 1)
 - SC-3 regression test checks only that mockPlay was NOT called — do NOT assert flash class absence on initial render with non-null ticket (Pitfall 5, Phase 6 design)
 
+### Phase 9: Rediseño UX/UI con estilo Material Design y Flat Design
+**Goal**: The app is restyled with Material Design 3 (Material You) aesthetics using Tailwind CSS v4: a sticky blue Top App Bar, MD3 color tokens via @theme, tonal/filled/outlined button hierarchy, surface-tonal cards, and an updated flash animation color. No new functionality. All 33 existing tests pass.
+**Mode:** mvp
+**Depends on**: Phase 8
+**Requirements**: D-01 through D-28 (locked design decisions from 09-CONTEXT.md)
+**Success Criteria** (what must be TRUE):
+  1. App loads with a sticky MD3 Top App Bar (blue #1976D2 background, white "Turnero" title) at the top of the page
+  2. All buttons use MD3 hierarchy: "Llamar siguiente" is a solid blue filled pill, "Agregar turno" is a tonal light-blue filled pill, "Agregar ventanilla" is an outlined blue pill
+  3. Queue strip and ventanilla cards use primary-container surface (#BBDEFB) with 12px rounded corners
+  4. Flash animation uses rgba(25, 118, 210, 0.25) as the FROM color, not amber; .ventanilla-ticket-flash class unchanged for test compatibility
+  5. All 33 existing tests pass without any modification to test files
+**Plans**: 3 plans
+
+Plans:
+
+**Wave 1**
+- [ ] 09-01-PLAN.md — Install tailwindcss@^4 + @tailwindcss/vite as devDependencies; add Tailwind plugin to vite.config.ts; add Google Fonts Roboto link to index.html
+
+**Wave 2** *(both plans run in parallel — different files, both depend on Wave 1)*
+- [ ] 09-02-PLAN.md — Replace src/index.css with @import "tailwindcss" + @theme MD3 tokens + residual flash animation (updated color) + ventanillas-grid class
+- [ ] 09-03-PLAN.md — Rewrite src/App.tsx: add sticky <header> Top App Bar; replace all className strings with Tailwind utilities per 09-UI-SPEC.md mapping
+
+**Cross-cutting constraints:**
+- `vite.config.ts` vitest test block must be preserved when adding Tailwind plugin — removing it breaks `npm test`
+- `.ventanilla-ticket-flash` must remain as plain CSS (not @utility or @layer) — FEEDBACK-02 tests query this class by name
+- `key={ventanilla.currentTicket?.id ?? 'empty'}` prop on ticket `<p>` is UNCHANGED — drives the re-mount flash trigger
+- 48px ticket numbers (text-5xl font-bold) are UNCHANGED — Phase 7 DISPLAY-01 constraint
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -204,3 +233,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 6. Call Transition Animation | 2/2 | Complete   | 2026-07-08 |
 | 7. Distance-Readable & Privacy-Safe Display | 2/2 | Complete | 2026-07-08 |
 | 8. Persistence Across Reloads | 2/2 | Complete | 2026-07-09 |
+| 9. Rediseño UX/UI con estilo Material Design y Flat Design | 0/3 | Ready to execute | — |
