@@ -458,17 +458,19 @@ describe('PERSIST-01: Persistence across reloads', () => {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Placement of loadFromStorage: inline vs separate file**
    - What we know: CONTEXT.md says "a single call site is fine either way"
    - What's unclear: Whether the planner prefers to follow the `useBeep.ts` convention (one hook/helper per file)
    - Recommendation: Inline in App.tsx to minimize file changes. If the team wants consistent convention, create `src/useLocalStorage.ts`.
+   - RESOLVED: Inline in App.tsx — single call site, < 10 lines; plan 08-02 Change 2 places `loadFromStorage()` above VentanillaCard in App.tsx.
 
 2. **useEffect initial write behavior**
    - What we know: On first render after reload, useEffect writes hydrated state back to localStorage (idempotent)
    - What's unclear: Whether this initial write is desirable (it could cause a "last accessed" style side effect if storage quota tracking is ever added)
    - Recommendation: Accept as-is; for this scope it's harmless and simplifies the code (no "was this the initial render?" tracking needed).
+   - RESOLVED: Accept initial write as-is — idempotent, no side effects at this scope; no "first render" tracking needed.
 
 ---
 

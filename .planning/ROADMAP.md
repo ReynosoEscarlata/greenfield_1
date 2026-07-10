@@ -203,4 +203,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 5. Call Sound Feedback | 2/2 | Complete   | 2026-07-08 |
 | 6. Call Transition Animation | 2/2 | Complete   | 2026-07-08 |
 | 7. Distance-Readable & Privacy-Safe Display | 1/2 | In progress | - |
-| 8. Persistence Across Reloads | 0/2 | Not started | - |
+| 8. Persistence Across Reloads | 0/2 | Planned | - |
