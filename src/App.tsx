@@ -1,6 +1,6 @@
 import { useState, useReducer, useEffect } from 'react'
 import { queueReducer, initialState } from './turnero'
-import type { Ventanilla } from './turnero'
+import type { Ventanilla, QueueState } from './turnero'
 import { useBeep } from './useBeep'
 
 export function VentanillaCard({
@@ -88,8 +88,19 @@ export function VentanillaCard({
   )
 }
 
+function loadFromStorage(): QueueState {
+  try {
+    return JSON.parse(localStorage.getItem('turnero-v1') ?? '') as QueueState
+  } catch {
+    return initialState
+  }
+}
+
 function App() {
-  const [state, dispatch] = useReducer(queueReducer, initialState)
+  const [state, dispatch] = useReducer(queueReducer, undefined, loadFromStorage)
+  useEffect(() => {
+    localStorage.setItem('turnero-v1', JSON.stringify(state))
+  }, [state])
 
   return (
     <div className="page">
