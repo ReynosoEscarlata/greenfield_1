@@ -161,7 +161,7 @@ Plans:
 - [x] 07-01-PLAN.md — Apply CSS typography scaling (48px ticket numbers, 22px chips/labels), grid constraint (max 3 cards/row), centering, 2-weight consolidation, and PRIVACY-01 automated tests (completed 2026-07-08)
 
 **Wave 2** *(blocked on Wave 1 completion)*
-- [ ] 07-02-PLAN.md — Visual checkpoint: confirm distance readability at 3m, grid wrapping, flash proportionality
+- [x] 07-02-PLAN.md — Visual checkpoint: confirm distance readability at 3m, grid wrapping, flash proportionality (completed 2026-07-08)
 
 **UI hint**: yes
 
@@ -174,10 +174,20 @@ Plans:
   1. User adds tickets, configures windows, and calls some tickets, then reloads the page — the queue and every ventanilla's current ticket are exactly as they were before reload
   2. If localStorage contains corrupted or malformed data, the app loads a sane default empty state instead of crashing
   3. Reloading the page with valid persisted state never triggers the call sound or transition animation (no "beep/animate on load" regression)
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 08-01: TBD
+
+**Wave 1**
+- [ ] 08-01-PLAN.md — TDD RED: add PERSIST-01 describe block (5 test cases) to App.test.tsx; import App default export and QueueState type
+
+**Wave 2** *(blocked on Wave 1 RED confirmation)*
+- [ ] 08-02-PLAN.md — TDD GREEN: add loadFromStorage() + lazy useReducer initializer + useEffect([state]) save to App.tsx; all 33 tests pass
+
+**Cross-cutting constraints:**
+- loadFromStorage() must use `?? ''` not `?? 'null'` — `JSON.parse('null')` returns null without throwing (Pitfall 4)
+- useReducer third arg must be the function reference `loadFromStorage` not the call `loadFromStorage()` — eager evaluation reads localStorage on every render (Pitfall 1)
+- SC-3 regression test checks only that mockPlay was NOT called — do NOT assert flash class absence on initial render with non-null ticket (Pitfall 5, Phase 6 design)
 
 ## Progress
 
@@ -193,4 +203,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 5. Call Sound Feedback | 2/2 | Complete   | 2026-07-08 |
 | 6. Call Transition Animation | 2/2 | Complete   | 2026-07-08 |
 | 7. Distance-Readable & Privacy-Safe Display | 1/2 | In progress | - |
-| 8. Persistence Across Reloads | 0/TBD | Not started | - |
+| 8. Persistence Across Reloads | 0/2 | Not started | - |
