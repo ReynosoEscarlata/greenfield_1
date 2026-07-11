@@ -206,7 +206,7 @@ Plans:
 Plans:
 
 **Wave 1**
-- [ ] 09-01-PLAN.md — Install tailwindcss@^4 + @tailwindcss/vite as devDependencies; add Tailwind plugin to vite.config.ts; add Google Fonts Roboto link to index.html
+- [x] 09-01-PLAN.md — Install tailwindcss@^4 + @tailwindcss/vite as devDependencies; add Tailwind plugin to vite.config.ts; add Google Fonts Roboto link to index.html
 
 **Wave 2** *(both plans run in parallel — different files, both depend on Wave 1)*
 - [ ] 09-02-PLAN.md — Replace src/index.css with @import "tailwindcss" + @theme MD3 tokens + residual flash animation (updated color) + ventanillas-grid class
@@ -233,4 +233,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 6. Call Transition Animation | 2/2 | Complete   | 2026-07-08 |
 | 7. Distance-Readable & Privacy-Safe Display | 2/2 | Complete | 2026-07-08 |
 | 8. Persistence Across Reloads | 2/2 | Complete | 2026-07-09 |
-| 9. Rediseño UX/UI con estilo Material Design y Flat Design | 0/3 | Ready to execute | — |
+| 9. Rediseño UX/UI con estilo Material Design y Flat Design | 1/3 | In progress | — |
