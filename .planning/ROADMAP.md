@@ -209,8 +209,8 @@ Plans:
 - [x] 09-01-PLAN.md — Install tailwindcss@^4 + @tailwindcss/vite as devDependencies; add Tailwind plugin to vite.config.ts; add Google Fonts Roboto link to index.html
 
 **Wave 2** *(both plans run in parallel — different files, both depend on Wave 1)*
-- [ ] 09-02-PLAN.md — Replace src/index.css with @import "tailwindcss" + @theme MD3 tokens + residual flash animation (updated color) + ventanillas-grid class
-- [ ] 09-03-PLAN.md — Rewrite src/App.tsx: add sticky <header> Top App Bar; replace all className strings with Tailwind utilities per 09-UI-SPEC.md mapping
+- [x] 09-02-PLAN.md — Replace src/index.css with @import "tailwindcss" + @theme MD3 tokens + residual flash animation (updated color) + ventanillas-grid class
+- [x] 09-03-PLAN.md — Rewrite src/App.tsx: add sticky <header> Top App Bar; replace all className strings with Tailwind utilities per 09-UI-SPEC.md mapping
 
 **Cross-cutting constraints:**
 - `vite.config.ts` vitest test block must be preserved when adding Tailwind plugin — removing it breaks `npm test`
@@ -233,4 +233,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 6. Call Transition Animation | 2/2 | Complete   | 2026-07-08 |
 | 7. Distance-Readable & Privacy-Safe Display | 2/2 | Complete | 2026-07-08 |
 | 8. Persistence Across Reloads | 2/2 | Complete | 2026-07-09 |
-| 9. Rediseño UX/UI con estilo Material Design y Flat Design | 1/3 | In progress | — |
+| 9. Rediseño UX/UI con estilo Material Design y Flat Design | 3/3 | Complete | 2026-07-10 |
