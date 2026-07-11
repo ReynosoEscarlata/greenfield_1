@@ -51,38 +51,38 @@ export function VentanillaCard({
   }
 
   return (
-    <div className="ventanilla-card">
+    <div className="bg-md-primary-container rounded-xl p-4 text-center relative">
       <button
         type="button"
-        className="ventanilla-remove"
+        className="absolute top-2 right-2 bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 cursor-pointer"
         onClick={handleRemove}
         aria-label={`Quitar ventanilla ${ventanilla.number}`}
       >
         ×
       </button>
-      <h3 className="ventanilla-label">Ventanilla {ventanilla.number}</h3>
+      <h3 className="text-[22px] font-normal text-gray-800 mb-1">Ventanilla {ventanilla.number}</h3>
       <p
         key={ventanilla.currentTicket?.id ?? 'empty'}
         className={
           ventanilla.currentTicket !== null
-            ? 'ventanilla-ticket ventanilla-ticket-flash'
-            : 'ventanilla-ticket'
+            ? 'text-5xl font-bold text-gray-900 ventanilla-ticket-flash'
+            : 'text-5xl font-bold text-gray-900'
         }
       >
         {ventanilla.currentTicket === null
           ? 'sin turno'
           : `Turno ${ventanilla.currentTicket.number}`}
       </p>
-      <button type="button" className="call-next-button" onClick={handleCallNext}>
+      <button type="button" className="bg-md-primary text-white rounded-full px-6 py-3 text-base font-normal w-full mt-2 cursor-pointer border-none hover:bg-[#1565C0]" onClick={handleCallNext}>
         Llamar siguiente
       </button>
       {showWarning && (
-        <p className="ventanilla-warning">
+        <p className="text-base text-md-error mt-2">
           No se puede quitar: tiene un turno activo
         </p>
       )}
       {showEmptyWarning && (
-        <p className="ventanilla-warning">No hay turnos en espera</p>
+        <p className="text-base text-md-error mt-2">No hay turnos en espera</p>
       )}
     </div>
   )
@@ -103,57 +103,61 @@ function App() {
   }, [state])
 
   return (
-    <div className="page">
-      <h1 className="page-title">Turnero</h1>
-      <button
-        type="button"
-        className="add-ticket-button"
-        onClick={() => dispatch({ type: 'ADD_TICKET' })}
-      >
-        Agregar turno
-      </button>
-      <section className="queue-strip">
-        <h2>Cola</h2>
-        {state.queue.length === 0 ? (
-          <p>Próximos turnos aparecerán aquí</p>
-        ) : (
-          <ul className="ticket-list">
-            {state.queue.map((ticket) => (
-              <li key={ticket.id} className="ticket-chip">
-                Turno {ticket.number}
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-      <section className="ventanillas-section">
-        <h2>Ventanillas</h2>
+    <>
+      <header className="sticky top-0 z-10 bg-md-primary text-white px-4 py-3">
+        <h1 className="text-4xl font-normal m-0">Turnero</h1>
+      </header>
+      <div className="max-w-[1200px] mx-auto px-8 py-8 box-border">
         <button
           type="button"
-          className="add-window-button"
-          onClick={() => dispatch({ type: 'ADD_WINDOW' })}
+          className="bg-md-primary-container text-md-on-primary-container rounded-full px-6 py-3 text-base font-normal cursor-pointer border-none mb-6 hover:bg-[#90CAF9]"
+          onClick={() => dispatch({ type: 'ADD_TICKET' })}
         >
-          Agregar ventanilla
+          Agregar turno
         </button>
-        <div className="ventanillas-grid">
-          {state.ventanillas.length === 0 ? (
-            <p className="ventanillas-empty">
-              Presiona Agregar ventanilla para comenzar
-            </p>
+        <section className="bg-md-primary-container rounded-xl p-6 mb-6">
+          <h2 className="text-[22px] font-normal text-gray-800 mb-2">Cola</h2>
+          {state.queue.length === 0 ? (
+            <p className="text-base font-normal text-gray-600">Próximos turnos aparecerán aquí</p>
           ) : (
-            state.ventanillas.map((v) => (
-              <VentanillaCard
-                key={v.id}
-                ventanilla={v}
-                onRemove={(id) => dispatch({ type: 'REMOVE_WINDOW', id })}
-                onCallNext={(id) => dispatch({ type: 'CALL_NEXT', windowId: id })}
-                queueLength={state.queue.length}
-              />
-            ))
+            <ul className="flex flex-wrap gap-2 list-none m-0 p-0">
+              {state.queue.map((ticket) => (
+                <li key={ticket.id} className="border border-md-primary text-md-primary rounded-full px-4 py-2 text-[22px] font-normal bg-white">
+                  Turno {ticket.number}
+                </li>
+              ))}
+            </ul>
           )}
-        </div>
-      </section>
-    </div>
+        </section>
+        <section className="mt-6">
+          <h2 className="text-[22px] font-normal text-gray-800 mb-2">Ventanillas</h2>
+          <button
+            type="button"
+            className="border border-md-primary text-md-primary rounded-full px-6 py-3 text-base font-normal bg-transparent cursor-pointer mb-4 hover:bg-md-primary/10"
+            onClick={() => dispatch({ type: 'ADD_WINDOW' })}
+          >
+            Agregar ventanilla
+          </button>
+          <div className="grid gap-4 ventanillas-grid">
+            {state.ventanillas.length === 0 ? (
+              <p className="text-base font-normal text-gray-600 col-span-full">
+                Presiona Agregar ventanilla para comenzar
+              </p>
+            ) : (
+              state.ventanillas.map((v) => (
+                <VentanillaCard
+                  key={v.id}
+                  ventanilla={v}
+                  onRemove={(id) => dispatch({ type: 'REMOVE_WINDOW', id })}
+                  onCallNext={(id) => dispatch({ type: 'CALL_NEXT', windowId: id })}
+                  queueLength={state.queue.length}
+                />
+              ))
+            )}
+          </div>
+        </section>
+      </div>
+    </>
   )
 }
 
