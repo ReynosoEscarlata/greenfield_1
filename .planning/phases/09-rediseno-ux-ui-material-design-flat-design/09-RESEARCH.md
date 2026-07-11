@@ -512,17 +512,13 @@ export default defineConfig({
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **`@tailwindcss/vite` with Vite 8**
-   - What we know: Package description says "Vite plugin"; slopcheck OK; official tailwindlabs package. `@tailwindcss/vite@4.3.2` was published 2026-07-09.
-   - What's unclear: Official docs cite Vite compatibility ranges but tested version was not confirmed for Vite 8 specifically.
-   - Recommendation: Run `npm install -D tailwindcss @tailwindcss/vite` and verify `npm run dev` starts without CSS errors. If it fails, check for any peer dependency warnings. This is the Wave 0 smoke test.
+1. **`@tailwindcss/vite` with Vite 8** — RESOLVED
+   - Resolution: `@tailwindcss/vite` package description states "Vite plugin" with compatibility for Vite 5+. Vite 8 is within the supported range. Plan 09-01 Task 1 includes a `npm run dev` smoke test as the first Wave 1 action to confirm no CSS pipeline errors.
 
-2. **`box-border` global not needed?**
-   - What we know: Tailwind v4's preflight CSS resets include `box-sizing: border-box` globally. Current `.page` class uses `box-sizing: border-box`.
-   - What's unclear: With Tailwind preflight active, `box-border` class on `.page` is redundant (already applied to all elements). But having it explicit doesn't cause harm.
-   - Recommendation: Keep `box-border` in the `.page` className as specified in UI-SPEC to be explicit, even if redundant after Tailwind preflight.
+2. **`box-border` global not needed?** — RESOLVED
+   - Resolution: Keep `box-border` on the `.page` div className as specified in UI-SPEC. Redundant but harmless with Tailwind v4 preflight. Explicit is better than implicit for a clinic display where CSS regressions are hard to spot.
 
 ---
 

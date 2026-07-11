@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: complete
-stopped_at: Phase 9 context gathered
-last_updated: "2026-07-09T00:00:00Z"
-last_activity: 2026-07-09
+status: in_progress
+stopped_at: Phase 9 planned — 3 plans ready to execute
+last_updated: "2026-07-10T00:00:00Z"
+last_activity: 2026-07-10
 progress:
-  total_phases: 8
+  total_phases: 9
   completed_phases: 8
-  total_plans: 16
+  total_plans: 19
   completed_plans: 16
-  percent: 100
+  percent: 84
 ---
 
 # Project State
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-06-21)
 
 ## Current Position
 
-Phase: 8
-Plan: 2 plans created (08-01 Wave 1, 08-02 Wave 2)
-Status: Ready to execute Phase 8
-Last activity: 2026-07-09
+Phase: 9
+Plan: 3 plans created (09-01 Wave 1, 09-02/09-03 Wave 2)
+Status: Ready to execute Phase 9
+Last activity: 2026-07-10
 
-Progress: [██████████] 100%
+Progress: [████████░░] 84%
 
 ## Performance Metrics
 
@@ -79,6 +79,9 @@ Recent decisions affecting current work:
 - [Phase 7 P01]: font-weight: 600 eliminated entirely — 2-weight consolidation (400 regular, 700 bold only)
 - [Phase 7 P01]: auto-fill (not auto-fit) for ventanillas-grid — prevents single card from stretching full width
 - [Phase 7 P01]: PRIVACY-01 satisfied by design — Ticket{id,number} has no name field; tests serve as regression guards
+- [Phase 9 plan]: D-16 amended — section headings use font-normal (400) not font-medium (500); 2-weight system (400+700) adopted to simplify typography
+- [Phase 9 plan]: .ventanilla-ticket-flash must stay as plain CSS (outside @layer/@utility) — FEEDBACK-02 tests query the exact class name via toHaveClass()
+- [Phase 9 plan]: Tailwind v4 @import "tailwindcss" replaces v3 three-directive pattern; @theme {} generates utility classes from --color-* variables
 
 ### Roadmap Evolution
 

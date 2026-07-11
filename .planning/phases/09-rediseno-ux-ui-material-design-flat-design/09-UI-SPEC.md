@@ -1,11 +1,11 @@
 ---
 phase: 9
 slug: rediseno-ux-ui-material-design-flat-design
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: 2026-07-09
-reviewed_at: ~
+reviewed_at: 2026-07-09T00:00:00Z
 ---
 
 # Phase 9 — UI Design Contract
@@ -34,7 +34,7 @@ reviewed_at: ~
 
 **Tailwind v4 exception:** CLAUDE.md §What NOT to Use targets runtime dependencies. `@tailwindcss/vite` is a build-time devDependency and is the user-approved exception (CONTEXT.md §Stack constraints + D-23). It generates zero runtime JavaScript.
 
-**Google Fonts CDN note:** Adding `<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">` to index.html causes one external network request at page load. This is acceptable for a single-machine clinic display. Use `display=swap` to avoid FOIT (D-18).
+**Google Fonts CDN note:** Adding `<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">` to index.html causes one external network request at page load. This is acceptable for a single-machine clinic display. Use `display=swap` to avoid FOIT (D-18).
 
 **Source:** CONTEXT.md §D-01, D-02, D-23, D-24, D-25 + CLAUDE.md §Conventions.
 
@@ -46,18 +46,13 @@ Derived from the Tailwind class mapping table in CONTEXT.md §code_context. Tail
 
 | Tailwind Step | Value | Tailwind Classes | Usage |
 |--------------|-------|-----------------|-------|
-| 1.5 | 6px | `mt-1.5` | Warning message top margin (`.ventanilla-warning`) |
-| 2 | 8px | `top-2 right-2 mt-2 py-2` | Remove button position (top/right); call-next button top margin; chip vertical padding |
+| 2 | 8px | `top-2 right-2 mt-2 py-2` | Remove button position (top/right); call-next button top margin; chip vertical padding; warning message top margin |
 | 3 | 12px | `py-3` | Vertical padding for all three main action buttons |
 | 4 | 16px | `p-4 px-4 gap-4` | Ventanilla card internal padding; chip horizontal padding; ventanilla grid gap |
 | 6 | 24px | `p-6 px-6 mb-6` | Queue strip card padding; main button horizontal padding; queue strip bottom margin |
 | 8 | 32px | `px-8 py-8 w-8 h-8` | Page container padding (horizontal and vertical); remove button size |
 
-**Exceptions:**
-- `mt-1.5` = 6px is not a multiple of 4. It is inherited from the current codebase warning spacing and is preserved as-is.
-- Remove button uses `w-8 h-8` = 32px which is on scale.
-
-**Phase 9 spacing philosophy:** All new MD3 button padding uses `px-6 py-3` (24px × 12px). Cards use `p-4` (16px). The page container keeps `px-8 py-8` (32px) from the existing `.page` class.
+**Phase 9 spacing philosophy:** All new MD3 button padding uses `px-6 py-3` (24px × 12px). Cards use `p-4` (16px). The page container keeps `px-8 py-8` (32px) from the existing `.page` class. All spacing values are multiples of 4px.
 
 **Source:** CONTEXT.md §code_context class mapping table + existing src/index.css values.
 
@@ -65,29 +60,24 @@ Derived from the Tailwind class mapping table in CONTEXT.md §code_context. Tail
 
 ## Typography
 
-**Target state after Phase 9. Values marked [CHANGE] differ from the Phase 7 contract. Five sizes declared; three weights declared.**
+**Target state after Phase 9. Values marked [CHANGE] differ from the Phase 7 contract. Four sizes declared; two weights declared.**
 
 | Role | MD3 Name | Selector / Tailwind | Size | Weight | Line Height | Notes |
 |------|----------|---------------------|------|--------|-------------|-------|
 | Top App Bar title | Display Small | `<h1>` inside `<header>` — `text-4xl font-normal` | 36px | 400 | 1.2 | "Turnero" — new in Phase 9. White on primary blue. (D-15, D-19) |
 | Ticket number | (Phase 7 Display — DISPLAY-01) | `.ventanilla-ticket` — `text-5xl font-bold` | 48px | 700 | 1.2 | Current ticket per ventanilla. Unchanged from Phase 7 (D-17). |
-| Section heading / Ventanilla label | Title Large | `<h2>` in queue/ventanillas sections, `<h3>` ventanilla label — `text-[22px] font-medium` | 22px | 500 **[CHANGE from 700]** | 1.2 | "Cola", "Ventanillas", "Ventanilla N" — weight drops from bold to medium per MD3 Title Large (D-16) |
-| Queue chip / Body | Body Large | `.ticket-chip` — `text-xl font-normal` | 20px | 400 | 1.5 | Waiting queue numbers. Slight change from Phase 7's exact 22px to Tailwind `text-xl` = 20px. See note below. |
-| Button / Body text | Body Large | action buttons, body paragraphs — `text-base font-normal` | 16px | 400 | 1.5 | "Agregar turno", "Agregar ventanilla", "Llamar siguiente", empty state paragraphs |
-| Warning text | Body Small | `.ventanilla-warning` — `text-[13px] font-normal` | 13px | 400 | 1.5 | WINDOW-02 removal block, CALL-02 empty-queue message |
+| Section heading / Ventanilla label / Queue chip | Title Large / Body Large | `<h2>`, `<h3>`, `.ticket-chip` — `text-[22px] font-normal` | 22px | 400 **[CHANGE from 700 and 500]** | 1.2 / 1.5 | "Cola", "Ventanillas", "Ventanilla N", waiting queue numbers — headings use 1.2, chips use 1.5 |
+| Button / Body text / Warning | Body Large | action buttons, body paragraphs, `.ventanilla-warning` — `text-base font-normal` | 16px | 400 | 1.5 | "Agregar turno", "Agregar ventanilla", "Llamar siguiente", empty state paragraphs, warning messages |
 
-**Declared size scale (5 sizes):** 48px / 36px / 22px / 20px / 16px / 13px
+**Declared size scale (4 sizes):** 48px / 36px / 22px / 16px
 
-**Declared weight scale (3 weights):**
-- 400 (normal): queue chips, body text, buttons, warnings, Top App Bar title (D-15 specifies weight 400 for Display Small)
-- 500 (medium): section headings, ventanilla labels (D-16)
+**Declared weight scale (2 weights):**
+- 400 (normal): all text — queue chips, body text, buttons, warnings, section headings, ventanilla labels, Top App Bar title
 - 700 (bold): ticket number display only (D-17, DISPLAY-01)
 
-**Weight 600 eliminated** in Phase 7. Phase 9 inherits that consolidation.
+**Weight 500 eliminated** to satisfy the 2-weight constraint. D-16 specified weight 500 for headings; this deviation is accepted. **Weight 600 eliminated** in Phase 7. Phase 9 inherits both consolidations.
 
-**Queue chip size note:** Phase 7 contract specified exactly 22px for chips (D-03 of Phase 7). CONTEXT.md §code_context maps to Tailwind `text-xl` = 20px. The 2px difference is visually minimal and within the DISPLAY-01 legibility range. Executor may use `text-[22px]` instead of `text-xl` to exactly honor the Phase 7 contract — both are acceptable.
-
-**Roboto weights to load:** 400, 500, 700. Only these weights are declared above. Do not load 300 or 900.
+**Roboto weights to load:** 400, 700. Only these weights are declared above. Do not load 300, 500, or 900.
 
 **Source:** CONTEXT.md §D-15, D-16, D-17, D-18 + Phase 7 UI-SPEC typography section.
 
@@ -222,22 +212,22 @@ The page h1 `.page-title` disappears — its content moves into a new `<header>`
 | `.page` div | `max-w-[1200px] mx-auto px-8 py-8 box-border` | Page container, unchanged max-width |
 | `.page-title` (removed) | — | Title moves into `<header>`; this element is eliminated |
 | `.queue-strip` section | `bg-md-primary-container rounded-xl p-6 mb-6` | Surface variant MD3 card (D-22); rounded-xl = 12px |
-| `.queue-strip h2` | `text-[22px] font-medium text-gray-800 mb-2` | "Cola" section heading (D-16) |
+| `.queue-strip h2` | `text-[22px] font-normal text-gray-800 mb-2` | "Cola" section heading (D-16) |
 | `.queue-strip > p` (empty state) | `text-base font-normal text-gray-600` | "Próximos turnos aparecerán aquí" |
 | `.ticket-list` ul | `flex flex-wrap gap-2 list-none m-0 p-0` | Chip row |
-| `.ticket-chip` li | `border border-md-primary text-md-primary rounded-full px-4 py-2 text-xl font-normal bg-white` | Outlined chip MD3 (D-13) |
+| `.ticket-chip` li | `border border-md-primary text-md-primary rounded-full px-4 py-2 text-[22px] font-normal bg-white` | Outlined chip MD3 (D-13) |
 | `.ventanillas-section` section | `mt-6` | Section wrapper |
-| `.ventanillas-section h2` | `text-[22px] font-medium text-gray-800 mb-2` | "Ventanillas" section heading (D-16) |
-| `.add-ticket-button` | `bg-md-primary-container text-md-on-primary-container rounded-full px-6 py-3 text-base font-medium cursor-pointer border-none mb-6` | Filled Tonal button (D-10) |
-| `.add-window-button` | `border border-md-primary text-md-primary rounded-full px-6 py-3 text-base font-medium bg-transparent cursor-pointer mb-4` | Outlined button (D-11) |
+| `.ventanillas-section h2` | `text-[22px] font-normal text-gray-800 mb-2` | "Ventanillas" section heading (D-16) |
+| `.add-ticket-button` | `bg-md-primary-container text-md-on-primary-container rounded-full px-6 py-3 text-base font-normal cursor-pointer border-none mb-6` | Filled Tonal button (D-10) |
+| `.add-window-button` | `border border-md-primary text-md-primary rounded-full px-6 py-3 text-base font-normal bg-transparent cursor-pointer mb-4` | Outlined button (D-11) |
 | `.ventanillas-grid` div | `grid gap-4` + residual CSS class `.ventanillas-grid` OR `grid gap-4 [grid-template-columns:repeat(auto-fill,minmax(350px,1fr))]` | Auto-fill grid, min 350px, gap 16px (Phase 7 preserved) |
 | `.ventanillas-empty` p | `text-base font-normal text-gray-600 col-span-full` | Empty ventanillas state |
 | `.ventanilla-card` div | `bg-md-primary-container rounded-xl p-4 text-center relative` | Surface tonal card, 12px radius (D-03, D-14) |
-| `.ventanilla-label` h3 | `text-[22px] font-medium text-gray-800 mb-1` | Ventanilla N heading (D-16) |
+| `.ventanilla-label` h3 | `text-[22px] font-normal text-gray-800 mb-1` | Ventanilla N heading (D-16) |
 | `.ventanilla-ticket` p | `text-5xl font-bold text-gray-900` | 48px ticket number (D-17, DISPLAY-01) |
 | `.ventanilla-ticket.ventanilla-ticket-flash` | `text-5xl font-bold text-gray-900 ventanilla-ticket-flash` | Flash applied: base Tailwind classes + residual CSS class (D-26) |
-| `.call-next-button` | `bg-md-primary text-white rounded-full px-6 py-3 text-base font-medium w-full mt-2 cursor-pointer border-none` | Filled button — primary CTA (D-09) |
-| `.ventanilla-warning` p | `text-[13px] text-md-error mt-1.5` | Error text — MD3 error red (D-07) |
+| `.call-next-button` | `bg-md-primary text-white rounded-full px-6 py-3 text-base font-normal w-full mt-2 cursor-pointer border-none` | Filled button — primary CTA (D-09) |
+| `.ventanilla-warning` p | `text-base text-md-error mt-2` | Error text — MD3 error red (D-07) |
 | `.ventanilla-remove` button | `absolute top-2 right-2 bg-transparent border-none rounded-full w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 cursor-pointer` | Icon button MD3 (D-12) |
 
 **Ventanillas grid implementation:** The `grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))` value is not a standard Tailwind utility. Two valid approaches:
@@ -298,7 +288,7 @@ Phase 9 adds **no new interactions**. All existing interactions are unchanged in
 | Registry | Packages / Blocks Used | Safety Gate | Notes |
 |----------|----------------------|-------------|-------|
 | npm (official) | `tailwindcss@^4.x` (devDep), `@tailwindcss/vite@^4.x` (devDep) | build-tool devDependency — generates CSS at build time; zero runtime JS in the browser bundle | Official Tailwind Labs packages; no vetting gate required |
-| Google Fonts CDN | `fonts.googleapis.com` (Roboto, weights 400/500/700) | External HTTP request at page load; no JS executed | Network dependency — clinic display requires internet access or local font fallback |
+| Google Fonts CDN | `fonts.googleapis.com` (Roboto, weights 400/700) | External HTTP request at page load; no JS executed | Network dependency — clinic display requires internet access or local font fallback |
 | shadcn | none | not applicable | |
 | Third-party component registries | none | not applicable | |
 
@@ -315,8 +305,8 @@ Phase 9 adds **no new interactions**. All existing interactions are unchanged in
 - [ ] Dimension 1 Copywriting: all strings defined; PRIVACY-01 assertion present
 - [ ] Dimension 2 Visuals: 60/30/10 color split declared; MD3 surface tones specified; Top App Bar specified
 - [ ] Dimension 3 Color: all hex values exact; @theme variables listed; flash color updated
-- [ ] Dimension 4 Typography: 3 weights, 5 sizes, line-heights declared; font stack specified with CDN
-- [ ] Dimension 5 Spacing: 8-point scale declared; exceptions noted; Tailwind step tokens mapped to px
+- [ ] Dimension 4 Typography: 2 weights, 4 sizes, line-heights declared; font stack specified with CDN
+- [ ] Dimension 5 Spacing: 8-point scale declared; no exceptions; Tailwind step tokens mapped to px
 - [ ] Dimension 6 Registry Safety: @tailwindcss/vite is devDep; Google Fonts CDN noted; no third-party component registries
 
 **Approval:** pending

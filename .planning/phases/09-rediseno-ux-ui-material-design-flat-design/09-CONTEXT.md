@@ -43,7 +43,7 @@ No se agregan rutas, componentes nuevos, ni lógica de estado. El look es MD3/Ma
 
 ### Tipografía
 - **D-15:** Título principal 'Turnero' = Display Small MD3: `font-size: 36px`, `font-weight: 400` — en Tailwind: `text-4xl font-normal`
-- **D-16:** Títulos de sección ('Cola', 'Ventanillas') = Title Large MD3: `font-size: 22px`, `font-weight: 500` — en Tailwind: `text-[22px] font-medium`
+- **D-16:** Títulos de sección ('Cola', 'Ventanillas') = Title Large MD3: `font-size: 22px`, `font-weight: 400` — en Tailwind: `text-[22px] font-normal` (peso 500 eliminado — sistema de 2 pesos: 400 y 700 únicamente)
 - **D-17:** Número de turno actual (por ventanilla) = mantener `48px / font-weight: 700` (text-5xl font-bold) — decisión de Phase 7, confirmada
 - **D-18:** Fuente: Roboto via Google Fonts (agregar `<link>` en `index.html`). La font-family en `@theme` o en el `body`: `'Roboto', sans-serif`
 
@@ -132,7 +132,7 @@ No se agregan rutas, componentes nuevos, ni lógica de estado. El look es MD3/Ma
 - Primary container exacto: `#BBDEFB` (o derivar con Tailwind `blue-100` = `#DBEAFE` — verificar cuál queda más auténtico a MD3; definir en `@theme` para control exacto)
 - Top App Bar: elemento `<header>` al tope del DOM, fuera del `.page` container, sticky con `bg-md-primary text-white px-4 py-3 text-4xl font-normal sticky top-0 z-10`
 - Animación flash actualizada: `from { background-color: rgba(25, 118, 210, 0.25); } to { background-color: transparent; }` — misma duración 600ms ease-out
-- Fuente Roboto: `<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">` en `<head>` de `index.html`
+- Fuente Roboto: `<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">` en `<head>` de `index.html` (solo pesos 400 y 700 — peso 500 eliminado por D-16)
 - El contenedor de ventanillas grid mantiene `repeat(auto-fill, minmax(350px, 1fr))` — la restricción de Phase 7 de max 3 tarjetas/fila se mantiene con el mismo `minmax`
 
 </specifics>
