@@ -1,130 +1,23 @@
-:root {
-  color-scheme: light;
-  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+@import "tailwindcss";
+
+@theme {
+  --color-md-primary: #1976D2;
+  --color-md-primary-container: #BBDEFB;
+  --color-md-on-primary: #FFFFFF;
+  --color-md-on-primary-container: #1565C0;
+  --color-md-error: #B3261E;
+  --font-sans: 'Roboto', sans-serif;
 }
 
 body {
   margin: 0;
-  background: #ffffff;
-}
-
-.page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 32px;
-  box-sizing: border-box;
-}
-
-.page-title {
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #1f2933;
-  margin: 0 0 24px;
-}
-
-.queue-strip {
-  background: #f1f3f5;
-  padding: 24px;
-  margin-bottom: 24px;
-}
-
-.queue-strip h2,
-.ventanillas-section h2 {
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #1f2933;
-  margin: 0 0 8px;
-}
-
-.queue-strip p,
-.ventanillas-section p {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.ventanillas-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 16px;
-}
-
-.ventanillas-grid > * {
-  background: #f1f3f5;
-  padding: 16px;
-}
-
-.add-ticket-button {
-  background: #f1f3f5;
-  color: #1f2933;
-  border: none;
-  border-radius: 6px;
-  padding: 12px 16px;
-  font-size: 16px;
-  font-weight: 400;
-  cursor: pointer;
-  margin: 0 0 24px;
-}
-
-.ticket-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.ticket-chip {
-  background: #ffffff;
-  color: #1f2933;
-  border-radius: 999px;
-  padding: 8px 16px;
-  font-size: 22px;
-  font-weight: 400;
-}
-
-.ventanillas-section {
-  margin-top: 24px;
-}
-
-.add-window-button {
-  background: #f1f3f5;
-  color: #1f2933;
-  border: none;
-  border-radius: 6px;
-  padding: 12px 16px;
-  font-size: 16px;
-  font-weight: 400;
-  cursor: pointer;
-  margin: 0 0 16px;
-}
-
-.ventanilla-card {
-  position: relative;
-  text-align: center;
-}
-
-.ventanilla-label {
-  font-size: 22px;
-  font-weight: 700;
-  color: #1f2933;
-  margin: 0 0 4px;
-}
-
-.ventanilla-ticket {
-  font-size: 48px;
-  font-weight: 700;
-  color: #1f2933;
-  margin: 0;
+  background: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
 }
 
 @keyframes ticket-flash {
   from {
-    background-color: #fbbf24;
+    background-color: rgba(25, 118, 210, 0.25);
   }
   to {
     background-color: transparent;
@@ -133,49 +26,9 @@ body {
 
 .ventanilla-ticket-flash {
   animation: ticket-flash 600ms ease-out forwards;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
-.ventanilla-remove {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  color: #6b7c93;
-  line-height: 1;
-  padding: 0;
-}
-
-.ventanilla-remove:hover {
-  color: #1f2933;
-}
-
-.ventanilla-warning {
-  font-size: 13px;
-  color: #c0392b;
-  margin: 6px 0 0;
-}
-
-.call-next-button {
-  background: #f1f3f5;
-  color: #1f2933;
-  border: none;
-  border-radius: 6px;
-  padding: 12px 16px;
-  font-size: 16px;
-  font-weight: 400;
-  cursor: pointer;
-  margin: 8px 0 0;
-  width: 100%;
-}
-
-.ventanillas-empty {
-  font-size: 16px;
-  font-weight: 400;
-  color: #1f2933;
-  margin: 0;
-  grid-column: 1 / -1;
+.ventanillas-grid {
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 }
