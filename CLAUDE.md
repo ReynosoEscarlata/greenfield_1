@@ -23,8 +23,8 @@ Una mini-app de turnero para la sala de espera de una clínica: una sola pantall
 | Technology | Version | Purpose | Why Recommended |
 |------------|---------|---------|-----------------|
 | React | ^19.2 | UI rendering | Current stable major version (19.2.7 as of June 2026). Native, mature TypeScript support; functional components + hooks are the standard pattern for small SPAs. User already specified React. |
-| TypeScript | ^5.7+ (whatever `create-vite` react-ts template pins) | Type safety | Catches state-shape bugs early — important here since the queue/ventanilla model has several interdependent pieces of state (queue array, per-window current ticket, window count). User-specified. |
-| Vite | ^7.x (scaffolded via `create-vite@latest`) | Build tool / dev server | De facto standard for new React SPAs in 2025-2026: instant HMR, zero-config TS support, tiny prod bundles. `npm create vite@latest` (create-vite 9.x) scaffolds Vite 7 + the `react-ts` template out of the box. No need to hand-roll webpack/CRA (CRA is deprecated). |
+| TypeScript | ~6.0.2 (as pinned in package.json; installed 6.0.3) | Type safety | Catches state-shape bugs early — important here since the queue/ventanilla model has several interdependent pieces of state (queue array, per-window current ticket, window count). User-specified. |
+| Vite | ^8.0.12 (as pinned in package.json; installed 8.0.16) | Build tool / dev server | De facto standard for new React SPAs in 2025-2026: instant HMR, zero-config TS support, tiny prod bundles. `npm create vite@latest` (create-vite 9.x) scaffolds Vite 8 + the `react-ts` template out of the box. No need to hand-roll webpack/CRA (CRA is deprecated). |
 ### Supporting Libraries
 | Library | Version | Purpose | When to Use (NOT here) |
 |---------|---------|---------|------------------------|
@@ -32,11 +32,11 @@ Una mini-app de turnero para la sala de espera de una clínica: una sola pantall
 ### Development Tools
 | Tool | Purpose | Notes |
 |------|---------|-------|
-| ESLint (+ `typescript-eslint`) | Linting | Ships pre-configured in the Vite `react-ts` template (current templates default to ESLint 9 flat config + Oxlint rules in some recent scaffolds). Keep default config; don't add extra plugins for a project this size. |
+| ESLint (+ `typescript-eslint`) | Linting | Ships pre-configured in the Vite `react-ts` template (this project uses ESLint 10 flat config (eslint ^10.3.0 in package.json) + Oxlint rules in some recent scaffolds). Keep default config; don't add extra plugins for a project this size. |
 | Prettier (optional) | Formatting | Optional — only add if the user wants consistent formatting; not load-bearing for a solo learning exercise. |
 | Vite dev server | Local dev | `npm run dev`; no proxy/backend config needed since there is no API. |
 ## Installation
-# Scaffold project (creates Vite 7 + React 19 + TypeScript template)
+# Scaffold project (creates Vite 8 + React 19 + TypeScript template)
 # No additional runtime dependencies needed.
 # (Optional, only if user wants stricter formatting:)
 ## Alternatives Considered
@@ -68,8 +68,8 @@ Una mini-app de turnero para la sala de espera de una clínica: una sola pantall
 ## Version Compatibility
 | Package A | Compatible With | Notes |
 |-----------|-----------------|-------|
-| Vite 7.x | Node.js 20.19+ or 22.12+ | Verified via WebSearch (create-vite docs): Vite 7 dropped support for older Node 18/20 minor versions; ensure local Node meets this floor before scaffolding. |
-| React 19.2.x | TypeScript 5.x + `@types/react` ^19.2 | `@types/react` 19.2.17 (June 2026) matches React 19.2.x; the `react-ts` Vite template pins compatible versions automatically — avoid manually mixing React 19 with `@types/react` 18.x. |
+| Vite 8.x | Node.js 20.19+ or 22.12+ | Verified via WebSearch (create-vite docs): Vite 7 dropped support for older Node 18/20 minor versions; ensure local Node meets this floor before scaffolding. |
+| React 19.2.x | TypeScript 6.x + `@types/react` ^19.2 | `@types/react` 19.2.17 (June 2026) matches React 19.2.x; the `react-ts` Vite template pins compatible versions automatically — avoid manually mixing React 19 with `@types/react` 18.x. |
 | `create-vite` react-ts template | ESLint 9 flat config | Recent template revisions ship ESLint 9 (flat config) plus optional Oxlint integration; if customizing lint rules, use the flat-config format, not the legacy `.eslintrc`. |
 ## Sources
 - WebSearch, verified against multiple results — `npm create vite@latest` / create-vite 9.x scaffolds Vite 7, Node 20.19+/22.12+ required. MEDIUM-HIGH confidence (consistent across vite.dev guide reference and npm package description).
@@ -90,7 +90,7 @@ Conventions not yet established. Will populate as patterns emerge during develop
 <!-- GSD:architecture-start source:ARCHITECTURE.md -->
 ## Architecture
 
-Architecture not yet mapped. Follow existing patterns found in the codebase.
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the component diagram, state/reducer design, and file references.
 <!-- GSD:architecture-end -->
 
 <!-- GSD:skills-start source:skills/ -->
