@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-06-21)
 Phase: 9 (final)
 Plan: 3 plans created and executed (09-01 Wave 1, 09-02/09-03 Wave 2)
 Status: Milestone v1.0 complete
-Last activity: 2026-07-14
+Last activity: 2026-07-15 - Completed quick task 260714-sd4: poder eliminar un turno una vez que fue asignado a una ventanilla
 
 Progress: [██████████] 100%
 
@@ -95,13 +95,19 @@ None yet.
 
 None yet.
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260714-sd4 | poder eliminar un turno una vez que fue asignado a una ventanilla | 2026-07-15 | a8ea83d | [260714-sd4-poder-eliminar-un-turno-una-vez-que-fue-](./quick/260714-sd4-poder-eliminar-un-turno-una-vez-que-fue-/) |
+
 ## Deferred Items
 
 Items acknowledged and carried forward from previous milestone close:
 
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
-| *(none)* | | | |
+| Build bug | `npm run build` fails at `tsc -b`: `src/setupTests.ts(28,1): error TS2304: Cannot find name 'global'` — pre-existing since commit `acd489d` (Phase 5), unrelated to CLEAR_TICKET feature. `vitest run` passes cleanly; only the type-check build step is affected. | Open | 2026-07-15 (quick task 260714-sd4) |
 
 ## Session Continuity
 
