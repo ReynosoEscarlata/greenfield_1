@@ -16,6 +16,7 @@ describe('WINDOW-03: Per-window current ticket display', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={1}
       />
     )
@@ -31,6 +32,7 @@ describe('WINDOW-02: Remove with guard', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: { id: 5, number: 5 } }}
         onRemove={onRemove}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={1}
       />
     )
@@ -46,6 +48,7 @@ describe('WINDOW-02: Remove with guard', () => {
         ventanilla={{ id: 2, number: 2, currentTicket: null }}
         onRemove={onRemove}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={1}
       />
     )
@@ -62,6 +65,7 @@ describe('CALL-01: Llamar siguiente dispatches CALL_NEXT', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={onCallNext}
+        onClearTicket={() => {}}
         queueLength={1}
       />
     )
@@ -84,6 +88,7 @@ describe('CALL-02: Empty-queue warning auto-dismiss', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={0}
       />
     )
@@ -105,6 +110,7 @@ describe('WR-01: showWarning resets when currentTicket is cleared externally', (
         ventanilla={{ id: 1, number: 1, currentTicket: { id: 5, number: 5 } }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={1}
       />
     )
@@ -116,6 +122,7 @@ describe('WR-01: showWarning resets when currentTicket is cleared externally', (
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={0}
       />
     )
@@ -134,6 +141,7 @@ describe('FEEDBACK-01: Beep on successful call', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={1}
       />
     )
@@ -147,6 +155,7 @@ describe('FEEDBACK-01: Beep on successful call', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={0}
       />
     )
@@ -162,6 +171,7 @@ describe('FEEDBACK-02: Flash class on ticket change', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: { id: 5, number: 5 } }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={0}
       />
     )
@@ -174,6 +184,7 @@ describe('FEEDBACK-02: Flash class on ticket change', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={0}
       />
     )
@@ -186,6 +197,7 @@ describe('FEEDBACK-02: Flash class on ticket change', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: { id: 10, number: 10 } }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={0}
       />
     )
@@ -196,6 +208,7 @@ describe('FEEDBACK-02: Flash class on ticket change', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: { id: 11, number: 11 } }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={0}
       />
     )
@@ -210,6 +223,7 @@ describe('PRIVACY-01: No patient-identifying data rendered', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: { id: 42, number: 42 } }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={0}
       />
     )
@@ -223,6 +237,7 @@ describe('PRIVACY-01: No patient-identifying data rendered', () => {
         ventanilla={{ id: 1, number: 1, currentTicket: null }}
         onRemove={() => {}}
         onCallNext={() => {}}
+        onClearTicket={() => {}}
         queueLength={0}
       />
     )
@@ -285,5 +300,37 @@ describe('PERSIST-01: Persistence across reloads', () => {
     expect(saved).not.toBeNull()
     expect(saved!.queue).toHaveLength(1)
     expect(saved!.nextNumber).toBe(2)
+  })
+})
+
+describe('CLEAR-02: Botón eliminar turno', () => {
+  it('con currentTicket activo, click en el botón por su aria-label llama onClearTicket con el id', () => {
+    const onClearTicket = vi.fn()
+    render(
+      <VentanillaCard
+        ventanilla={{ id: 1, number: 1, currentTicket: { id: 5, number: 5 } }}
+        onRemove={() => {}}
+        onCallNext={() => {}}
+        onClearTicket={onClearTicket}
+        queueLength={0}
+      />
+    )
+    fireEvent.click(screen.getByRole('button', { name: 'Eliminar turno de ventanilla 1' }))
+    expect(onClearTicket).toHaveBeenCalledWith(1)
+  })
+
+  it('con currentTicket null, el botón de eliminar turno no está presente', () => {
+    render(
+      <VentanillaCard
+        ventanilla={{ id: 1, number: 1, currentTicket: null }}
+        onRemove={() => {}}
+        onCallNext={() => {}}
+        onClearTicket={() => {}}
+        queueLength={0}
+      />
+    )
+    expect(
+      screen.queryByRole('button', { name: 'Eliminar turno de ventanilla 1' })
+    ).not.toBeInTheDocument()
   })
 })
