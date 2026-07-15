@@ -108,6 +108,43 @@ describe('CALL-01: CALL_NEXT reducer', () => {
   })
 })
 
+describe('CLEAR-01: Eliminar turno asignado', () => {
+  it('CLEAR-01-A: CLEAR_TICKET sobre una ventanilla con currentTicket lo deja en null', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    state = queueReducer(state, { type: 'ADD_TICKET' })
+    state = queueReducer(state, { type: 'CALL_NEXT', windowId: 1 })
+    state = queueReducer(state, { type: 'CLEAR_TICKET', windowId: 1 })
+    expect(state.ventanillas[0].currentTicket).toBeNull()
+  })
+
+  it('CLEAR-01-B: CLEAR_TICKET NO devuelve el ticket a state.queue (la cola no cambia de longitud)', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    state = queueReducer(state, { type: 'ADD_TICKET' })
+    state = queueReducer(state, { type: 'CALL_NEXT', windowId: 1 })
+    const queueLengthBefore = state.queue.length
+    state = queueReducer(state, { type: 'CLEAR_TICKET', windowId: 1 })
+    expect(state.queue).toHaveLength(queueLengthBefore)
+  })
+
+  it('CLEAR-01-C: CLEAR_TICKET sobre ventanilla sin turno (currentTicket ya null) es no-op seguro', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })
+    state = queueReducer(state, { type: 'CLEAR_TICKET', windowId: 1 })
+    expect(state.ventanillas[0].currentTicket).toBeNull()
+  })
+
+  it('CLEAR-01-D: CLEAR_TICKET solo afecta la ventanilla del windowId indicado; otras ventanillas quedan intactas', () => {
+    let state = queueReducer(initialState, { type: 'ADD_WINDOW' })  // Ventanilla 1
+    state = queueReducer(state, { type: 'ADD_WINDOW' })              // Ventanilla 2
+    state = queueReducer(state, { type: 'ADD_TICKET' })
+    state = queueReducer(state, { type: 'ADD_TICKET' })
+    state = queueReducer(state, { type: 'CALL_NEXT', windowId: 1 })
+    state = queueReducer(state, { type: 'CALL_NEXT', windowId: 2 })
+    state = queueReducer(state, { type: 'CLEAR_TICKET', windowId: 1 })
+    expect(state.ventanillas[0].currentTicket).toBeNull()
+    expect(state.ventanillas[1].currentTicket?.number).toBe(2)
+  })
+})
+
 describe('WR-02: REMOVE_WINDOW reducer guard', () => {
   it('WR-02-A: REMOVE_WINDOW is no-op when ventanilla has active ticket', () => {
     let state = queueReducer(initialState, { type: 'ADD_WINDOW' })
