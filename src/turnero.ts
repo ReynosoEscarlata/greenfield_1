@@ -36,6 +36,7 @@ export type QueueAction =
   | { type: 'ADD_WINDOW' }
   | { type: 'REMOVE_WINDOW'; id: number }
   | { type: 'CALL_NEXT'; windowId: number }
+  | { type: 'CLEAR_TICKET'; windowId: number }
 
 export const initialState: QueueState = {
   queue: [],
@@ -92,6 +93,17 @@ export function queueReducer(state: QueueState, action: QueueAction): QueueState
         ventanillas: state.ventanillas.map((v) =>
           v.id === action.windowId
             ? { ...v, currentTicket: nextTicket }
+            : v
+        ),
+      }
+    }
+    case 'CLEAR_TICKET': {
+      // El turno se descarta: NO se devuelve a state.queue (política del producto).
+      return {
+        ...state,
+        ventanillas: state.ventanillas.map((v) =>
+          v.id === action.windowId
+            ? { ...v, currentTicket: null }
             : v
         ),
       }
