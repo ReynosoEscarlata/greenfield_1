@@ -7,11 +7,13 @@ export function VentanillaCard({
   ventanilla,
   onRemove,
   onCallNext,
+  onClearTicket,
   queueLength,
 }: Readonly<{
   ventanilla: Ventanilla
   onRemove: (id: number) => void
   onCallNext: (id: number) => void
+  onClearTicket: (id: number) => void
   queueLength: number
 }>) {
   const [showWarning, setShowWarning] = useState(false)
@@ -76,6 +78,16 @@ export function VentanillaCard({
       <button type="button" className="bg-md-primary text-white rounded-full px-6 py-3 text-base font-normal w-full mt-2 cursor-pointer border-none hover:bg-[#1565C0]" onClick={handleCallNext}>
         Llamar siguiente
       </button>
+      {ventanilla.currentTicket !== null && (
+        <button
+          type="button"
+          className="border border-md-error text-md-error bg-transparent rounded-full px-6 py-3 text-base font-normal w-full mt-2 cursor-pointer hover:bg-md-error/10"
+          onClick={() => onClearTicket(ventanilla.id)}
+          aria-label={`Eliminar turno de ventanilla ${ventanilla.number}`}
+        >
+          Eliminar turno
+        </button>
+      )}
       {showWarning && (
         <p className="text-base text-md-error mt-2">
           No se puede quitar: tiene un turno activo
@@ -150,6 +162,7 @@ function App() {
                   ventanilla={v}
                   onRemove={(id) => dispatch({ type: 'REMOVE_WINDOW', id })}
                   onCallNext={(id) => dispatch({ type: 'CALL_NEXT', windowId: id })}
+                  onClearTicket={(id) => dispatch({ type: 'CLEAR_TICKET', windowId: id })}
                   queueLength={state.queue.length}
                 />
               ))
