@@ -18,10 +18,10 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-06-21)
+See: .planning/PROJECT.md (updated 2026-07-15)
 
 **Core value:** Que cualquier ventanilla pueda llamar al siguiente turno de la cola compartida y la pantalla refleje correctamente, en todo momento, cuál es el turno actual de cada ventanilla y cuáles son los próximos en espera.
-**Current focus:** Milestone complete
+**Current focus:** Planning next milestone (v2 candidates on record: OPS-01, OPS-02)
 
 ## Current Position
 
