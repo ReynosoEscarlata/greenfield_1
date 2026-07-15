@@ -18,10 +18,16 @@ Que cualquier ventanilla pueda llamar al siguiente turno de la cola compartida y
 - [x] Cada ventanilla muestra su turno actual (o "sin turno" si nunca llamó ninguno) — Validated in Phase 3: Configurable Ventanillas
 - [x] Usuario puede presionar "Llamar siguiente" en una ventanilla para tomar el próximo turno de la cola compartida — Validated in Phase 4: Call Next (Atomic Dequeue)
 
-### Active
-- [x] Al llamar un turno se reproduce un sonido/beep — Validated in Phase 5: Call Sound
+### Validated (continued)
+
+- [x] Al llamar un turno se reproduce un sonido/beep — Validated in Phase 5: Call Sound Feedback
 - [x] Al cambiar el turno actual de una ventanilla se muestra una pequeña animación de transición — Validated in Phase 6: Call Transition Animation
-- [ ] El estado de la cola y las ventanillas persiste en el navegador (localStorage) entre recargas de página
+- [x] Los números de turno son legibles a distancia (alto contraste, tipografía grande) y la pantalla nunca muestra datos identificatorios de pacientes — Validated in Phase 7: Distance-Readable & Privacy-Safe Display
+- [x] El estado de la cola y las ventanillas persiste en el navegador (localStorage) entre recargas de página, con recuperación defensiva ante datos corruptos/ausentes — Validated in Phase 8: Persistence Across Reloads
+
+### Active
+
+None — all v1 requirements shipped and validated. Phase 9 (Rediseño UX/UI Material Design) added no new requirements; it restyled the existing UI with Tailwind v4 + MD3 tokens without changing functionality (all 33 pre-Phase-9 tests passed unmodified).
 
 ### Out of Scope
 
@@ -48,10 +54,11 @@ Que cualquier ventanilla pueda llamar al siguiente turno de la cola compartida y
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Cola única compartida en vez de colas por ventanilla | Simplifica la lógica de "llamar siguiente" y es más realista para una sala de espera con varias ventanillas atendiendo el mismo flujo | — Pending |
-| Número de ventanillas configurable dinámicamente | El usuario quiso flexibilidad en vez de un número fijo (2 o 3) | — Pending |
-| Persistencia con localStorage en vez de solo memoria volátil | El usuario prefirió que la fila sobreviva a un refresh de página | — Pending |
-| Sonido + animación al llamar turno | Mejora la experiencia de uso real de un turnero sin agregar complejidad de backend | — Pending |
+| Cola única compartida en vez de colas por ventanilla | Simplifica la lógica de "llamar siguiente" y es más realista para una sala de espera con varias ventanillas atendiendo el mismo flujo | ✓ Shipped Phase 4 — CALL_NEXT dequeues atómicamente de una única cola compartida, sin colisiones en clics simultáneos |
+| Número de ventanillas configurable dinámicamente | El usuario quiso flexibilidad en vez de un número fijo (2 o 3) | ✓ Shipped Phase 3 — ADD_WINDOW/REMOVE_WINDOW con guard que bloquea remover una ventanilla con turno activo |
+| Persistencia con localStorage en vez de solo memoria volátil | El usuario prefirió que la fila sobreviva a un refresh de página | ✓ Shipped Phase 8 — loadFromStorage() + useReducer lazy initializer + useEffect save; recuperación defensiva ante JSON corrupto/ausente |
+| Sonido + animación al llamar turno | Mejora la experiencia de uso real de un turnero sin agregar complejidad de backend | ✓ Shipped Phases 5–6 — beep síncrono dentro del click (FEEDBACK-01) + flash visual con key-prop remount (FEEDBACK-02) |
+| Rediseño MD3/Tailwind v4 en Phase 9 sin nuevos requirements | Modernizar la UI (Top App Bar, jerarquía de botones, tokens de color) sin tocar lógica ya validada | ✓ Shipped Phase 9 — Tailwind v4 + tokens MD3 vía @theme; 33/39 tests pre-existentes intactos sin modificar archivos de test |
 
 ## Evolution
 
@@ -71,4 +78,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-08 after Phase 6: Call Transition Animation — amber ticket-flash animation delivered, 26/26 tests GREEN*
+*Last updated: 2026-07-15 after Phase 9: Rediseño UX/UI Material Design — milestone v1.0 complete, all 12 v1 requirements shipped and validated, 39/39 tests passing*

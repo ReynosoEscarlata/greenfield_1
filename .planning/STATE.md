@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: complete
-stopped_at: Phase 9 complete — all 9 phases delivered, milestone v1.0 complete
-last_updated: "2026-07-14T00:00:00Z"
+status: milestone_complete
+stopped_at: Milestone complete (Phase 09 was final phase)
+last_updated: 2026-07-15T03:42:54.109Z
 last_activity: 2026-07-14
 progress:
   total_phases: 9
   completed_phases: 9
   total_plans: 19
-  completed_plans: 19
+  completed_plans: 17
   percent: 100
 ---
 
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-06-21)
 
 **Core value:** Que cualquier ventanilla pueda llamar al siguiente turno de la cola compartida y la pantalla refleje correctamente, en todo momento, cuál es el turno actual de cada ventanilla y cuáles son los próximos en espera.
-**Current focus:** Milestone v1.0 complete — all 9 phases delivered
+**Current focus:** Milestone complete
 
 ## Current Position
 
-Phase: 9 (final)
-Plan: 3 plans created and executed (09-01 Wave 1, 09-02/09-03 Wave 2)
-Status: Milestone v1.0 complete
-Last activity: 2026-07-15 - Completed quick task 260714-sd4: poder eliminar un turno una vez que fue asignado a una ventanilla
+Phase: 09
+Plan: Not started
+Status: Milestone complete
+Last activity: 2026-07-15
 
 Progress: [██████████] 100%
 
@@ -36,7 +36,7 @@ Progress: [██████████] 100%
 
 **Velocity:**
 
-- Total plans completed: 8
+- Total plans completed: 11
 - Average duration: - min
 - Total execution time: 0 hours
 
@@ -108,9 +108,14 @@ Items acknowledged and carried forward from previous milestone close:
 | Category | Item | Status | Deferred At |
 |----------|------|--------|-------------|
 | Build bug | `npm run build` fails at `tsc -b`: `src/setupTests.ts(28,1): error TS2304: Cannot find name 'global'` — pre-existing since commit `acd489d` (Phase 5), unrelated to CLEAR_TICKET feature. `vitest run` passes cleanly; only the type-check build step is affected. | Open | 2026-07-15 (quick task 260714-sd4) |
+| Shape validation | `loadFromStorage()` validates JSON syntax but not object shape (PERSIST-01) — corrupted-but-valid-JSON could crash on render. Flagged independently 3x: Phase 8 design notes, Phase 9 code review (09-REVIEW.md WR-01), and two integration-checker runs. | Open | 2026-07-15 (v1.0 milestone audit) |
+| A11y bug | `index.html` declares `lang="en"` on an all-Spanish UI (09-REVIEW.md WR-02) | Open | 2026-07-15 (v1.0 milestone audit) |
+| Audio bug | `AudioContext` never resumed — beep silently fails on iOS Safari / some Chromium builds (09-REVIEW.md WR-03) | Open | 2026-07-15 (v1.0 milestone audit) |
+| Test coverage | No regression test for `ADD_WINDOW → ADD_TICKET → CALL_NEXT → CLEAR_TICKET → REMOVE_WINDOW` cross-action sequence; no App-level E2E test for the full "call → clear" click-through flow | Open | 2026-07-15 (integration check on quick task 260714-sd4) |
+| Test flakiness | 1 of 5 consecutive `npm test -- --run` runs during Phase 9 UAT showed a single failure that didn't reproduce — likely a timer/fake-timer race in a CALL-02 or FEEDBACK-01 timing test | Open | 2026-07-15 (Phase 9 UAT) |
 
 ## Session Continuity
 
-Last session: 2026-07-14T00:00:00Z
-Stopped at: Milestone v1.0 complete — all 9 phases delivered and verified
+Last session: 2026-07-15T03:42:54Z
+Stopped at: Phase 9 UAT complete (5/5 passed, 0 issues) — Milestone v1.0 fully complete, verified, secured, and Nyquist-compliant
 Resume file: none (milestone complete)
