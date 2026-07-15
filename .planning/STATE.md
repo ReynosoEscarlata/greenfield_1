@@ -2,14 +2,14 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: milestone_complete
-stopped_at: Milestone complete (Phase 09 was final phase)
-last_updated: 2026-07-15T03:42:54.109Z
-last_activity: 2026-07-14
+status: Awaiting next milestone
+stopped_at: Phase 9 UAT complete (5/5 passed, 0 issues) — Milestone v1.0 fully complete, verified, secured, and Nyquist-compliant
+last_updated: "2026-07-15T03:48:41.055Z"
+last_activity: 2026-07-15 — Milestone v1.0 completed and archived
 progress:
   total_phases: 9
   completed_phases: 9
-  total_plans: 19
+  total_plans: 17
   completed_plans: 17
   percent: 100
 ---
@@ -25,12 +25,10 @@ See: .planning/PROJECT.md (updated 2026-06-21)
 
 ## Current Position
 
-Phase: 09
-Plan: Not started
-Status: Milestone complete
-Last activity: 2026-07-15
-
-Progress: [██████████] 100%
+Phase: Milestone v1.0 complete
+Plan: —
+Status: Awaiting next milestone
+Last activity: 2026-07-15 — Milestone v1.0 completed and archived
 
 ## Performance Metrics
 
@@ -113,9 +111,15 @@ Items acknowledged and carried forward from previous milestone close:
 | Audio bug | `AudioContext` never resumed — beep silently fails on iOS Safari / some Chromium builds (09-REVIEW.md WR-03) | Open | 2026-07-15 (v1.0 milestone audit) |
 | Test coverage | No regression test for `ADD_WINDOW → ADD_TICKET → CALL_NEXT → CLEAR_TICKET → REMOVE_WINDOW` cross-action sequence; no App-level E2E test for the full "call → clear" click-through flow | Open | 2026-07-15 (integration check on quick task 260714-sd4) |
 | Test flakiness | 1 of 5 consecutive `npm test -- --run` runs during Phase 9 UAT showed a single failure that didn't reproduce — likely a timer/fake-timer race in a CALL-02 or FEEDBACK-01 timing test | Open | 2026-07-15 (Phase 9 UAT) |
+| Human UAT gap | FEEDBACK-01 (audible beep) never confirmed by a human in a real browser with audio hardware — 05-HUMAN-UAT.md shows 1 pending / 0 passed. All automated coverage passes; this is the one open human-verification item across the whole milestone (contrast Phases 4 and 6, fully approved). | Open | 2026-07-15 (v1.0 milestone close — acknowledged, not blocking) |
+| Phase 9 verification | Phase 9 (Rediseño UX/UI) never produced a formal goal-backward `09-VERIFICATION.md` against its 5 ROADMAP success criteria — substituted by 09-REVIEW.md, 09-VALIDATION.md (nyquist_compliant), 09-SECURITY.md (6/6 closed), and 2 integration-checker passes, all clean. | Open | 2026-07-15 (v1.0 milestone close — acknowledged, not blocking) |
 
 ## Session Continuity
 
 Last session: 2026-07-15T03:42:54Z
 Stopped at: Phase 9 UAT complete (5/5 passed, 0 issues) — Milestone v1.0 fully complete, verified, secured, and Nyquist-compliant
 Resume file: none (milestone complete)
+
+## Operator Next Steps
+
+- Start the next milestone with /gsd-new-milestone

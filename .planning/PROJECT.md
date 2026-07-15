@@ -27,7 +27,7 @@ Que cualquier ventanilla pueda llamar al siguiente turno de la cola compartida y
 
 ### Active
 
-None — all v1 requirements shipped and validated. Phase 9 (Rediseño UX/UI Material Design) added no new requirements; it restyled the existing UI with Tailwind v4 + MD3 tokens without changing functionality (all 33 pre-Phase-9 tests passed unmodified).
+None yet for v2 — to be defined via `/gsd:new-milestone`. Candidates already on record in the (now-archived) v1.0 REQUIREMENTS.md "v2 Requirements" section: OPS-01 (recall / "volver a llamar" un turno no atendido), OPS-02 (deshacer el último "llamar siguiente"). Phase 9 (Rediseño UX/UI Material Design) added no new requirements; it restyled the existing UI with Tailwind v4 + MD3 tokens without changing functionality (all 33 pre-Phase-9 tests passed unmodified).
 
 ### Out of Scope
 
@@ -42,6 +42,13 @@ None — all v1 requirements shipped and validated. Phase 9 (Rediseño UX/UI Mat
 - Proyecto greenfield, sin código previo.
 - El objetivo principal declarado por el usuario no es la app en sí, sino practicar el ciclo de vida completo de GSD (questioning → research → requirements → roadmap → planning → execution) por primera vez. Esto sugiere mantener el scope deliberadamente chico y no expandirlo más allá de lo definido aquí.
 - Stack sugerido por el usuario: React + TypeScript con Vite, estado en memoria (con persistencia en localStorage según lo definido en Requirements).
+
+## Current State (as of v1.0)
+
+- **Shipped:** 2026-07-15. 9 phases, 17 plans, ~864 LOC TypeScript/TSX, 142 files changed since project start (27k insertions).
+- **Tech stack in use:** React 19 + TypeScript + Vite, Tailwind CSS v4 (added Phase 9 for MD3 restyle), `useReducer` in `src/turnero.ts`, hand-written `useLocalStorage`-style persistence, native `HTMLAudioElement`/Web Audio for the call beep, CSS-only transition for the flash animation. No routing, no backend, no state library — matches the original stack recommendation exactly.
+- **Test suite:** 39/39 automated tests passing (TDD RED/GREEN discipline across all feature phases).
+- **Known tech debt (see STATE.md Deferred Items for full detail):** `npm run build` fails at the `tsc -b` step only (pre-existing `setupTests.ts` type error, `vitest run` unaffected); `loadFromStorage()` validates JSON syntax but not object shape; `index.html lang="en"` on all-Spanish UI; `AudioContext` never resumed (iOS Safari beep silent-fail risk); 2 missing regression/E2E tests for the CLEAR_TICKET quick-task flow; FEEDBACK-01 audible-beep human UAT never completed in a real browser; Phase 9 has no formal goal-backward VERIFICATION.md (substituted by code review + Nyquist validation + security audit, all clean).
 
 ## Constraints
 
@@ -78,4 +85,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-15 after Phase 9: Rediseño UX/UI Material Design — milestone v1.0 complete, all 12 v1 requirements shipped and validated, 39/39 tests passing*
+*Last updated: 2026-07-15 after v1.0 milestone close — full evolution review complete, Current State captured, v2 candidates (OPS-01, OPS-02) on record for `/gsd:new-milestone`*
